@@ -1,5 +1,5 @@
 					<header class="page-header">
-						<h2>Kompetensi Dasar</h2>
+						<h2>KKM</h2>
 						<div class="right-wrapper text-end">
 							<ol class="breadcrumbs">
 								<li>
@@ -7,7 +7,7 @@
 										<i class="bx bx-home-alt"></i>
 									</a>
 								</li>
-								<li><span>Kompetensi Dasar</span></li>
+								<li><span>KKM</span></li>
 							</ol>
 							<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
 						</div>
@@ -145,17 +145,15 @@
 										</div>
 										
 									</div>
-									<h2 class="card-title judul">Kompetensi Dasar</h2>
+									<h2 class="card-title judul">KKM Tahun Ajaran <?=$tapel;?></h2>
 						</header>
 						<div class="card-body">
 							<div class="row">
-								<div class="col">
+								<div class="col-12">
 									<section class="card">
 										<header class="card-header">
 											<div class="card-actions">
-													<div class="btn-group">
-														<button type="button" class="mb-1 mt-1 me-1 btn btn-sm btn-default" data-bs-toggle="modal" data-bs-target="#formKDP"><i class="fas fa-sync"></i> Pengetahuan</button>
-													</div>
+													
 											</div>
 												<h2 class="card-title">Pengetahuan</h2>
 										</header>
@@ -164,35 +162,11 @@
 											<table class="table table-bordered table-striped" id="KD1">
 												<thead>
 													<tr>
-														<th width="10%">KD</th>
-														<th width="70%">Deskripsi</th>
-														<th width="20%">Aksi</th>
-													</tr>
-												</thead>
-												<tbody>				
-												</tbody>
-											</table>
-										</div>
-									</section>
-								</div>
-								<div class="col">
-									<section class="card">
-										<header class="card-header">
-											<div class="card-actions">
-													<div class="btn-group">
-														<button type="button" class="mb-1 mt-1 me-1 btn btn-sm btn-default" data-bs-toggle="modal" data-bs-target="#formKDK"><i class="fas fa-sync"></i> Ketrampilan</button>
-													</div>
-											</div>
-												<h2 class="card-title">Ketrampilan</h2>
-										</header>
-										<div class="card-body">
-											
-											<table class="table table-bordered table-striped" id="KD2">
-												<thead>
-													<tr>
-														<th width="10%">KD</th>
-														<th width="70%">Deskripsi</th>
-														<th width="20%">Aksi</th>
+														<th width="5%">KD</th>
+														<th width="50%">Kompetensi Dasar</th>
+														<th width="15%">Karakteristik Muatan/Mata Pelajaran (Kompleksitas)</th>
+														<th width="15%">Karakteristik Peserta Didik (Intake)</th>
+														<th width="15%">Kondisi Satuan Pendidikan</th>
 													</tr>
 												</thead>
 												<tbody>				

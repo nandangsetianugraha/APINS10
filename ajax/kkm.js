@@ -3,23 +3,19 @@ var KD1;
 var KD2;
 $(document).ready(function() {
 	var kelas=$('#kelas').val();
+	var tapel=$('#tapel').val();
 	var smt=$('#smt').val();
 	var mp=$('#mp').val();
 	KD1 = $('#KD1').DataTable( {
 		"destroy":true,
 		"searching": false,
-		"ajax": "modul/administrasi/kompetensi-dasar.php?kelas="+kelas+"&smt="+smt+"&aspek=3&mp="+mp,
-		"order": []
-	} );
-	KD2 = $('#KD2').DataTable( {
-		"destroy":true,
-		"searching": false,
-		"ajax": "modul/administrasi/kompetensi-dasar.php?kelas="+kelas+"&smt="+smt+"&aspek=4&mp="+mp,
+		"ajax": "modul/administrasi/kkmku.php?kelas="+kelas+"&tapel="+tapel+"&mapel="+mp,
 		"order": []
 	} );
 	$('#kelas').change(function(){
 			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
-		var kelas = $('#kelas').val();
+		var kelas=$('#kelas').val();
+		var tapel=$('#tapel').val();
 		var smt=$('#smt').val();
 		var mp=$('#mp').val();
 		$.ajax({
@@ -34,31 +30,20 @@ $(document).ready(function() {
 		KD1 = $('#KD1').DataTable( {
 			"destroy":true,
 			"searching": false,
-			"ajax": "modul/administrasi/kompetensi-dasar.php?kelas="+kelas+"&smt="+smt+"&aspek=3&mp="+mp,
-			"order": []
-		} );
-		KD2 = $('#KD2').DataTable( {
-			"destroy":true,
-			"searching": false,
-			"ajax": "modul/administrasi/kompetensi-dasar.php?kelas="+kelas+"&smt="+smt+"&aspek=4&mp="+mp,
+			"ajax": "modul/administrasi/kkmku.php?kelas="+kelas+"&tapel="+tapel+"&mapel="+mp,
 			"order": []
 		} );
 	});
 	$('#mp').change(function(){
 			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
-		var kelas = $('#kelas').val();
+		var kelas=$('#kelas').val();
+		var tapel=$('#tapel').val();
 		var smt=$('#smt').val();
 		var mp=$('#mp').val();
 		KD1 = $('#KD1').DataTable( {
 			"destroy":true,
 			"searching": false,
-			"ajax": "modul/administrasi/kompetensi-dasar.php?kelas="+kelas+"&smt="+smt+"&aspek=3&mp="+mp,
-			"order": []
-		} );
-		KD2 = $('#KD2').DataTable( {
-			"destroy":true,
-			"searching": false,
-			"ajax": "modul/administrasi/kompetensi-dasar.php?kelas="+kelas+"&smt="+smt+"&aspek=4&mp="+mp,
+			"ajax": "modul/administrasi/kkmku.php?kelas="+kelas+"&tapel="+tapel+"&mapel="+mp,
 			"order": []
 		} );
 	});

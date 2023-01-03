@@ -1,5 +1,5 @@
 					<header class="page-header">
-						<h2>Kompetensi Dasar</h2>
+						<h2>Pemetaan KD</h2>
 						<div class="right-wrapper text-end">
 							<ol class="breadcrumbs">
 								<li>
@@ -7,7 +7,7 @@
 										<i class="bx bx-home-alt"></i>
 									</a>
 								</li>
-								<li><span>Kompetensi Dasar</span></li>
+								<li><span>Pemetaan KD</span></li>
 							</ol>
 							<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
 						</div>
@@ -145,7 +145,7 @@
 										</div>
 										
 									</div>
-									<h2 class="card-title judul">Kompetensi Dasar</h2>
+									<h2 class="card-title judul">Pemetaan KD Semester <?=$smt;?></h2>
 						</header>
 						<div class="card-body">
 							<div class="row">
@@ -164,9 +164,8 @@
 											<table class="table table-bordered table-striped" id="KD1">
 												<thead>
 													<tr>
-														<th width="10%">KD</th>
-														<th width="70%">Deskripsi</th>
-														<th width="20%">Aksi</th>
+														<th width="20%">Tema/PB</th>
+														<th width="80%">Pemetaan KD</th>
 													</tr>
 												</thead>
 												<tbody>				
@@ -190,9 +189,8 @@
 											<table class="table table-bordered table-striped" id="KD2">
 												<thead>
 													<tr>
-														<th width="10%">KD</th>
-														<th width="70%">Deskripsi</th>
-														<th width="20%">Aksi</th>
+														<th width="20%">Tema/PB</th>
+														<th width="80%">Pemetaan KD</th>
 													</tr>
 												</thead>
 												<tbody>				

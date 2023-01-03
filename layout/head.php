@@ -9,7 +9,7 @@
 		$judul=implode(" ",$judul);
 		if($judul==''){$judul='Beranda';};
 		?>
-		<title><?=ucwords($judul);?> | APINS</title>
+		<title><?=strtoupper($judul);?> | APINS</title>
 		<meta name="keywords" content="Aplikasi Penilaian dan Informasi Nilai Siswa" />
 		<meta name="description" content="APINS - SD Islam Al Jannah Gabuswetan">
 		<meta name="author" content="Nandang Setia Nugraha">
