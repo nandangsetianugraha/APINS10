@@ -25,12 +25,17 @@ while($s=$query->fetch_assoc()) {
 	$actionButton3 = '
 	<span class="input form-control form-control-sm" contenteditable="true" data-old_value="'.$cr3.'"  onBlur="saveKKM(this,\'nilai\',\''.$kelas.'\',\''.$tapel.'\',\''.$mpid.'\',\''.$kda.'\',\'3\')" onClick="highlightEdit(this);">'.$cr3.'</span>
 	';
+	$kkms=$connect->query("select AVG(nilai) as rerata from kkmku where kelas='$kelas' and tapel='$tapel' and mapel='$mpid' and kd='$kda'")->fetch_assoc();
+	$kkmKD='
+	<div id="'.$kda.'">'.number_format($kkms['rerata'],0).'</div>
+	';
 	$output['data'][] = array(
 		$s['kd'],
 		$s['nama_kd'],
 		$actionButton1,
 		$actionButton2,
-		$actionButton3
+		$actionButton3,
+		$kkmKD
 	);
 	
 };

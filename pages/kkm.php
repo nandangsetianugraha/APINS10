@@ -158,15 +158,89 @@
 												<h2 class="card-title">Pengetahuan</h2>
 										</header>
 										<div class="card-body">
-											
+											<div class="row mb-3">
+												<div class="col-xl-4">
+													<section class="card card-featured-left card-featured-primary mb-3">
+														<div class="card-body">
+															<div class="widget-summary">
+																<div class="widget-summary-col widget-summary-col-icon">
+																	<div class="summary-icon bg-primary">
+																		<i class="fas fa-users"></i>
+																	</div>
+																</div>
+																<div class="widget-summary-col">
+																	<div class="summary">
+																		<h4 class="title">KKM Mapel</h4>
+																		<div class="info">
+																			<strong class="amount"><div id="kkmmapel"></div></strong>
+																		</div>
+																	</div>
+																	<div class="summary-footer">
+																		<a class="text-muted text-uppercase" href="#">(Lihat Semua)</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</section>
+												</div>
+												<div class="col-xl-4">
+													<section class="card card-featured-left card-featured-primary mb-3">
+														<div class="card-body">
+															<div class="widget-summary">
+																<div class="widget-summary-col widget-summary-col-icon">
+																	<div class="summary-icon bg-primary">
+																		<i class="fas fa-users"></i>
+																	</div>
+																</div>
+																<div class="widget-summary-col">
+																	<div class="summary">
+																		<h4 class="title">KKM Kelas</h4>
+																		<div class="info">
+																			<strong class="amount"><div id="kkmkelas"></div></strong>
+																		</div>
+																	</div>
+																	<div class="summary-footer">
+																		<a class="text-muted text-uppercase" href="#">(Lihat Semua)</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</section>
+												</div>
+												<div class="col-xl-4">
+													<section class="card card-featured-left card-featured-primary mb-3">
+														<div class="card-body">
+															<div class="widget-summary">
+																<div class="widget-summary-col widget-summary-col-icon">
+																	<div class="summary-icon bg-primary">
+																		<i class="fas fa-users"></i>
+																	</div>
+																</div>
+																<div class="widget-summary-col">
+																	<div class="summary">
+																		<h4 class="title">KKM Sekolah</h4>
+																		<div class="info">
+																			<strong class="amount"><div id="kkmsekolah"></div></strong>
+																		</div>
+																	</div>
+																	<div class="summary-footer">
+																		<a class="text-muted text-uppercase" href="#">(Lihat Semua)</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</section>
+												</div>
+											</div>
 											<table class="table table-bordered table-striped" id="KD1">
 												<thead>
 													<tr>
 														<th width="5%">KD</th>
-														<th width="50%">Kompetensi Dasar</th>
+														<th width="45%">Kompetensi Dasar</th>
 														<th width="15%">Karakteristik Muatan/Mata Pelajaran (Kompleksitas)</th>
 														<th width="15%">Karakteristik Peserta Didik (Intake)</th>
 														<th width="15%">Kondisi Satuan Pendidikan</th>
+														<th width="5%">KKM KD</th>
 													</tr>
 												</thead>
 												<tbody>				

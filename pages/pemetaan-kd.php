@@ -207,10 +207,10 @@
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h5 class="modal-title">KD Pengetahuan</h5>
+									<h5 class="modal-title">Pemetaan KD Pengetahuan</h5>
 									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 								</div>
-								<form id="KDPForm" method="POST" action="../modul/administrasi/simpanKD.php" class="form">
+								<form id="KDPForm" method="POST" action="modul/administrasi/simpanPemetaan.php" class="form">
 									<div class="tema-data"></div>
 								</form>
 							</div>
@@ -221,10 +221,10 @@
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h5 class="modal-title">KD Ketrampilan</h5>
+									<h5 class="modal-title">Pemetaan KD Ketrampilan</h5>
 									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 								</div>
-								<form id="KDKForm" method="POST" action="../modul/administrasi/simpanKD.php" class="form">
+								<form id="KDKForm" method="POST" action="modul/administrasi/simpanPemetaan.php" class="form">
 									<div class="tema-data"></div>
 								</form>
 							</div>

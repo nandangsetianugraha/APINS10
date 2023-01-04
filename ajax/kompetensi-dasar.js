@@ -62,15 +62,14 @@ $(document).ready(function() {
 			"order": []
 		} );
 	});
-		$('#formKDP').on('show.bs.modal', function (e) {
-            var kelas = $('#kelas').val();
-			var smt=$('#smt').val();
-			var mp=$('#mp').val();
+	
+	$('#editTema').on('show.bs.modal', function (e) {
+            var rowid = $(e.relatedTarget).data('tema');
             //menggunakan fungsi ajax untuk pengambilan data
             $.ajax({
                 type : 'post',
-                url : 'modul/administrasi/modal-KD.php',
-                data :  'rowid=3&kelas='+kelas+'&smt='+smt+'&mp='+mp,
+                url : 'modul/administrasi/edit-KD.php',
+                data :  'rowid='+ rowid,
 				beforeSend: function()
 						{	
 							$(".tema-data").html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading ...');
@@ -80,23 +79,45 @@ $(document).ready(function() {
                 }
             });
          });
+		$('#formKDP').on('show.bs.modal', function (e) {
+            var kelas = $('#kelas').val();
+			var smt=$('#smt').val();
+			var mp=$('#mp').val();
+            //menggunakan fungsi ajax untuk pengambilan data
+			
+				$.ajax({
+					type : 'post',
+					url : 'modul/administrasi/modal-KD.php',
+					data :  'rowid=3&kelas='+kelas+'&smt='+smt+'&mp='+mp,
+					beforeSend: function()
+							{	
+								$(".tema-data").html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading ...');
+							},
+					success : function(data){
+					$('.tema-data').html(data);//menampilkan data ke dalam modal
+					}
+				});
+			
+         });
 		 $('#formKDK').on('show.bs.modal', function (e) {
             var kelas = $('#kelas').val();
 			var smt=$('#smt').val();
 			var mp=$('#mp').val();
             //menggunakan fungsi ajax untuk pengambilan data
-            $.ajax({
-                type : 'post',
-                url : 'modul/administrasi/modal-KD.php',
-                data :  'rowid=4&kelas='+kelas+'&smt='+smt+'&mp='+mp,
-				beforeSend: function()
-						{	
-							$(".tema-data").html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading ...');
-						},
-                success : function(data){
-                $('.tema-data').html(data);//menampilkan data ke dalam modal
-                }
-            });
+			
+				$.ajax({
+					type : 'post',
+					url : 'modul/administrasi/modal-KD.php',
+					data :  'rowid=4&kelas='+kelas+'&smt='+smt+'&mp='+mp,
+					beforeSend: function()
+							{	
+								$(".tema-data").html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading ...');
+							},
+					success : function(data){
+					$('.tema-data').html(data);//menampilkan data ke dalam modal
+					}
+				});
+			
          });
 		
 		$("#KDPForm").unbind('submit').bind('submit', function() {
@@ -181,6 +202,59 @@ $(document).ready(function() {
 						var mp=$('#mp').val();
 						KD2.ajax.reload(null, false);
 						$("#formKDK").modal('hide');
+					} else {
+						const Toast = Swal.mixin({
+						  toast: true,
+						  position: 'top-right',
+						  iconColor: 'white',
+						  customClass: {
+							popup: 'colored-toast'
+						  },
+						  showConfirmButton: false,
+						  timer: 1500,
+						  timerProgressBar: true
+						})
+						Toast.fire({
+						  icon: 'success',
+						  title: response.messages
+						})
+					}
+				} // /success
+			}); // /ajax
+			return false;
+		});
+	
+	$("#updateTemaForm").unbind('submit').bind('submit', function() {
+			var form = $(this);
+
+			$.ajax({
+				url: form.attr('action'),
+				type: form.attr('method'),
+				data: form.serialize(),
+				dataType: 'json',
+				success:function(response) {
+					if(response.success == true) {
+						const Toast = Swal.mixin({
+						  toast: true,
+						  position: 'top-right',
+						  iconColor: 'white',
+						  customClass: {
+							popup: 'colored-toast'
+						  },
+						  showConfirmButton: false,
+						  timer: 1500,
+						  timerProgressBar: true
+						})
+						Toast.fire({
+						  icon: 'success',
+						  title: response.messages
+						})
+						var kelas = $('#kelas').val();
+						var smt=$('#smt').val();
+						var mp=$('#mp').val();
+						KD1.ajax.reload(null, false);
+						KD2.ajax.reload(null, false);
+						$("#editTema").modal('hide');
 					} else {
 						const Toast = Swal.mixin({
 						  toast: true,

@@ -27,6 +27,18 @@ $(document).ready(function() {
 				$("#mp").html(data);
 			}
 		});
+		$.ajax({
+			type : 'GET',
+			url : 'modul/administrasi/cek-kkm.php',
+			data :  'kelas=' +kelas+'&tapel='+tapel+'&mapel='+mp,
+			dataType: 'json',
+			success: function (response) {
+				//jika data berhasil didapatkan, tampilkan ke dalam option select mp
+				$('#kkmmapel').html(response.kkmmapel);
+				$('#kkmkelas').html(response.kkmkelas);
+				$('#kkmsekolah').html(response.kkmsekolah);
+			}
+		});
 		KD1 = $('#KD1').DataTable( {
 			"destroy":true,
 			"searching": false,
@@ -46,149 +58,51 @@ $(document).ready(function() {
 			"ajax": "modul/administrasi/kkmku.php?kelas="+kelas+"&tapel="+tapel+"&mapel="+mp,
 			"order": []
 		} );
+		$.ajax({
+			type : 'GET',
+			url : 'modul/administrasi/cek-kkm.php',
+			data :  'kelas=' +kelas+'&tapel='+tapel+'&mapel='+mp,
+			dataType: 'json',
+			success: function (response) {
+				//jika data berhasil didapatkan, tampilkan ke dalam option select mp
+				$('#kkmmapel').html(response.kkmmapel);
+				$('#kkmkelas').html(response.kkmkelas);
+				$('#kkmsekolah').html(response.kkmsekolah);
+			}
+		});
 	});
-		$('#formKDP').on('show.bs.modal', function (e) {
-            var kelas = $('#kelas').val();
-			var smt=$('#smt').val();
-			var mp=$('#mp').val();
-            //menggunakan fungsi ajax untuk pengambilan data
-            $.ajax({
-                type : 'post',
-                url : 'modul/administrasi/modal-KD.php',
-                data :  'rowid=3&kelas='+kelas+'&smt='+smt+'&mp='+mp,
-				beforeSend: function()
-						{	
-							$(".tema-data").html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading ...');
-						},
-                success : function(data){
-                $('.tema-data').html(data);//menampilkan data ke dalam modal
-                }
-            });
-         });
-		 $('#formKDK').on('show.bs.modal', function (e) {
-            var kelas = $('#kelas').val();
-			var smt=$('#smt').val();
-			var mp=$('#mp').val();
-            //menggunakan fungsi ajax untuk pengambilan data
-            $.ajax({
-                type : 'post',
-                url : 'modul/administrasi/modal-KD.php',
-                data :  'rowid=4&kelas='+kelas+'&smt='+smt+'&mp='+mp,
-				beforeSend: function()
-						{	
-							$(".tema-data").html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading ...');
-						},
-                success : function(data){
-                $('.tema-data').html(data);//menampilkan data ke dalam modal
-                }
-            });
-         });
-		
-		$("#KDPForm").unbind('submit').bind('submit', function() {
-			var form = $(this);
-
-			$.ajax({
-				url: form.attr('action'),
-				type: form.attr('method'),
-				data: form.serialize(),
-				dataType: 'json',
-				success:function(response) {
-					if(response.success == true) {
-						const Toast = Swal.mixin({
-						  toast: true,
-						  position: 'top-right',
-						  iconColor: 'white',
-						  customClass: {
-							popup: 'colored-toast'
-						  },
-						  showConfirmButton: false,
-						  timer: 1500,
-						  timerProgressBar: true
-						})
-						Toast.fire({
-						  icon: 'success',
-						  title: response.messages
-						})
-						var kelas = $('#kelas').val();
-						var smt=$('#smt').val();
-						var mp=$('#mp').val();
-						KD1.ajax.reload(null, false);
-						$("#formKDP").modal('hide');
-					} else {
-						const Toast = Swal.mixin({
-						  toast: true,
-						  position: 'top-right',
-						  iconColor: 'white',
-						  customClass: {
-							popup: 'colored-toast'
-						  },
-						  showConfirmButton: false,
-						  timer: 1500,
-						  timerProgressBar: true
-						})
-						Toast.fire({
-						  icon: 'success',
-						  title: response.messages
-						})
-					}
-				} // /success
-			}); // /ajax
-			return false;
-		});
-		
-		$("#KDKForm").unbind('submit').bind('submit', function() {
-			var form = $(this);
-
-			$.ajax({
-				url: form.attr('action'),
-				type: form.attr('method'),
-				data: form.serialize(),
-				dataType: 'json',
-				success:function(response) {
-					if(response.success == true) {
-						const Toast = Swal.mixin({
-						  toast: true,
-						  position: 'top-right',
-						  iconColor: 'white',
-						  customClass: {
-							popup: 'colored-toast'
-						  },
-						  showConfirmButton: false,
-						  timer: 1500,
-						  timerProgressBar: true
-						})
-						Toast.fire({
-						  icon: 'success',
-						  title: response.messages
-						})
-						var kelas = $('#kelas').val();
-						var smt=$('#smt').val();
-						var mp=$('#mp').val();
-						KD2.ajax.reload(null, false);
-						$("#formKDK").modal('hide');
-					} else {
-						const Toast = Swal.mixin({
-						  toast: true,
-						  position: 'top-right',
-						  iconColor: 'white',
-						  customClass: {
-							popup: 'colored-toast'
-						  },
-						  showConfirmButton: false,
-						  timer: 1500,
-						  timerProgressBar: true
-						})
-						Toast.fire({
-						  icon: 'success',
-						  title: response.messages
-						})
-					}
-				} // /success
-			}); // /ajax
-			return false;
-		});
 });
 
+	function highlightEdit(editableObj) {
+			$(editableObj).css("background","#FFF0000");
+		} 
+	function saveKKM(editableObj,column,kelas,tapel,mpid,kda,jenis) {
+			// no change change made then return false
+		if($(editableObj).attr('data-old_value') === editableObj.innerHTML)
+		return false;
+		// send ajax to update value
+		$(editableObj).css("background","#FFF url(loader.gif) no-repeat right");
+		$.ajax({
+			url: "modul/administrasi/saveKKM.php",
+			cache: false,
+			data:'column='+column+'&value='+editableObj.innerHTML+'&kelas='+kelas+'&tapel='+tapel+'&mp='+mpid+'&kda='+kda+'&jenis='+jenis,
+			dataType: 'json',
+			success: function(response)  {
+				console.log(response);
+				if(response.success == true) {
+					$('#kkmku').html(response.kkmnya);
+					$('#'+response.KD).val(response.rata);
+				}
+				$(editableObj).attr('data-old_value',editableObj.innerHTML);
+				$(editableObj).css("background","#FDFDFD");	
+					
+				// set updated value as old value
+				
+				
+			}          
+		});
+	};
+	
 	function removeKD(id = null) {
 		if(id) {
 			// click on remove button

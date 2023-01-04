@@ -39,6 +39,7 @@
 		<script src="<?=base_url();?>vendor/datatables/media/js/dataTables.bootstrap5.min.js"></script>
 		<script src="<?=base_url();?>js/bootstrap-datepicker.js"></script>
 		<script src="<?=base_url();?>vendor/sweetalert2/sweetalert2.all.min.js"></script>
+		<script src="<?=base_url();?>vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
 
 		<!-- Theme Base, Components and Settings -->
 		<script src="<?=base_url();?>js/theme.js"></script>

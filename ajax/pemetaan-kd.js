@@ -69,7 +69,7 @@ $(document).ready(function() {
             //menggunakan fungsi ajax untuk pengambilan data
             $.ajax({
                 type : 'post',
-                url : 'modul/administrasi/modal-KD.php',
+                url : 'modul/administrasi/modal-peta.php',
                 data :  'rowid=3&kelas='+kelas+'&smt='+smt+'&mp='+mp,
 				beforeSend: function()
 						{	
@@ -87,7 +87,7 @@ $(document).ready(function() {
             //menggunakan fungsi ajax untuk pengambilan data
             $.ajax({
                 type : 'post',
-                url : 'modul/administrasi/modal-KD.php',
+                url : 'modul/administrasi/modal-peta.php',
                 data :  'rowid=4&kelas='+kelas+'&smt='+smt+'&mp='+mp,
 				beforeSend: function()
 						{	
@@ -210,7 +210,7 @@ $(document).ready(function() {
 			
 			Swal.fire({
 			  title: 'Yakin dihapus?',
-			  text: "Apakah anda yakin menghapus absensi ini?",
+			  text: "Apakah anda yakin menghapus Pemetaan KD ini?",
 			  icon: 'warning',
 			  showCancelButton: true,
 			  confirmButtonColor: '#3085d6',
@@ -219,7 +219,7 @@ $(document).ready(function() {
 			}).then((result) => {
 			  if (result.isConfirmed) {
 				$.ajax({
-						url: 'modul/administrasi/hapus-KD.php',
+						url: 'modul/administrasi/hapus-peta.php',
 						type: 'post',
 						data: {member_id : id},
 						dataType: 'json',

@@ -102,8 +102,8 @@
 					
 					<div id="userbox" class="userbox">
 						<a href="#" data-bs-toggle="dropdown">
-							<figure class="profile-picture">
-								<img src="https://sdi-aljannah.web.id/apins/images/ptk/<?=$avatar;?>" alt="Joseph Doe" class="rounded-circle" data-lock-picture="https://sdi-aljannah.web.id/apins/images/ptk/<?=$avatar;?>" />
+							<figure class="profile-picture" id="image-place">
+								<img src="images/ptk/<?=$avatar;?>" alt="Joseph Doe" class="rounded-circle" data-lock-picture="images/ptk/<?=$avatar;?>" />
 							</figure>
 							<div class="profile-info" data-lock-name="<?=$bioku['nama'];?>" data-lock-email="<?=$bioku['email'];?>">
 								<span class="name"><?=$bioku['nama'];?></span>

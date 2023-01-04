@@ -33,37 +33,51 @@
 										<header class="card-header bg-primary w-100">
 
 											<div class="widget-profile-info">
-												<div class="profile-picture" id="uploaded_image">
-													<img src="https://sdi-aljannah.web.id/apins/images/ptk/<?=$avatar;?>">
-													<input type="hidden" id="idptks" value="<?=$bioku['ptk_id'];?>">
+												<div class="profile-picture" id="image-place">
+													<img src="images/ptk/<?=$avatar;?>">
 												</div>
 												<div class="profile-info">
 													<h4 class="name font-weight-semibold"><?=$bioku['nama'];?></h4>
 													<h5 class="role"><?=$jns_ptk['jenis_ptk'];?></h5>
-													<div class="profile-footer">
-														<div id="imgChange">
-															<span>Ubah Foto</span>
-															<input type="file" accept="image/*" name="upload_image" id="upload_image">
-														</div>
+													<div class="profile-footer">														
+														<a href="#" data-bs-toggle="modal" data-bs-target="#ubahPP" id="btnPP">(ubah gambar)</a>	
 													</div>
 												</div>
 											</div>
 
 										</header>
-										<div id="uploadimageModal" class="modal" role="dialog">
-											<div class="modal-dialog">
+										<div class="modal" id="ubahPP" tabindex="-1" role="dialog">
+											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-header">
-														<h4 class="modal-title">Upload & Crop Image</h4>
+														<h5 class="modal-title">Poto Profil</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
-													<div class="modal-body">
-														<div id="image_demo" style="width:350px; margin-top:30px"></div>
-														<button class="btn btn-success crop_image">Crop & Upload Image</button>
-													</div>
-													
+													<form id="image-upload" action="images/upload.php?idptk=<?=$bioku['ptk_id'];?>" method="post" enctype="multipart/form-data">
+														<div class="modal-body">
+															<section class="card card-group">
+																<header class="card-header bg-primary w-100">
+																	<div class="widget-profile-info">
+																		<div class="profile-picture" id="preview">
+																			<img src="images/ptk/<?=$avatar;?>">
+																		</div>
+																		<div class="profile-info">
+																			<input type="file" name="image" id="image" required />
+																			<input type="hidden" name="idptks" id="idptks" value="<?=$bioku['ptk_id'];?>" />
+																			<p class="loading"></p>
+																		</div>
+																	</div>
+																</header>
+															</section>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+														</div>
+													</form>
 												</div>
 											</div>
 										</div>
+										
 										<div id="accordion" class="w-100">
 											<div class="card card-accordion card-accordion-first">
 												<div class="card-header border-bottom-0">

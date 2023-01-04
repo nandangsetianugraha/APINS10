@@ -45,6 +45,7 @@
 		<link rel="stylesheet" href="<?=base_url();?>vendor/morris/morris.css" />
 		<link rel="stylesheet" href="<?=base_url();?>vendor/datatables/media/css/dataTables.bootstrap5.css" />
 		<link rel="stylesheet" href="<?=base_url();?>vendor/sweetalert2/sweetalert2.min.css">
+		<link rel="stylesheet" href="<?=base_url();?>vendor/bootstrap-fileupload/bootstrap-fileupload.min.css" />
 		<link rel="icon" href="favicon.ico" sizes="16x16">
 
 		<!-- Theme CSS -->

@@ -271,8 +271,8 @@ include '../config/db_connect.php';
 
           <div style="max-width: 23rem;">
             <div class="text-center mb-5">
-              <img class="img-fluid" src="../assets/img1.png" alt="Image Description" style="width: 12rem;" data-hs-theme-appearance="default">
-              <img class="img-fluid" src="../assets/img1.png" alt="Image Description" style="width: 12rem;" data-hs-theme-appearance="dark">
+              <img class="img-fluid" src="../assets/teaching.png" alt="Image Description" style="width: 12rem;" data-hs-theme-appearance="default">
+              <img class="img-fluid" src="../assets/teaching.png" alt="Image Description" style="width: 12rem;" data-hs-theme-appearance="dark">
             </div>
 
             <div class="mb-5">
