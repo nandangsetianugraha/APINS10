@@ -210,3 +210,55 @@ function PopupCenter(pageURL, title,w,h) {
 	var top = (screen.height/2)-(h/2);
 	var targetWin = window.open (pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
 };
+
+	function removeAktivitas(id = null) {
+		if(id) {
+			// click on remove button
+			
+			Swal.fire({
+			  title: 'Yakin dihapus?',
+			  text: "Apakah anda yakin menghapus Aktivitas ini?",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Ya, Hapus!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				$.ajax({
+						url: 'modul/kepegawaian/hapus-aktivitas.php',
+						type: 'post',
+						data: {member_id : id},
+						dataType: 'json',
+						success:function(response) {
+							if(response.success == true) {						
+								// refresh the table
+								var idptks = $('#idptks').val();
+								$.ajax({
+									type : 'GET',
+									url : 'modul/kepegawaian/aktivitas.php',
+									data :  'idptk='+idptks,
+									beforeSend: function()
+									{	
+										$("#loading").show();
+										$(".loader").show();
+									},
+									success: function (data) {
+										$("#loading").hide();
+										$(".loader").hide();
+										//jika data berhasil didapatkan, tampilkan ke dalam option select mp
+										$("#collapse1One").html(data);
+									}
+								});
+							} else {
+								Swal.fire("Kesalahan",response.messages,"error");
+							}
+						}
+					});
+			  }
+			})
+			
+		} else {
+			Swal.fire("Kesalahan","Error Sistem","error");
+		}
+	}
