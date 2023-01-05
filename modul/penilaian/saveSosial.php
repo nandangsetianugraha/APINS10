@@ -3,7 +3,7 @@ session_start();
 $ptkid=$_SESSION['userid'];
 date_default_timezone_set('Asia/Jakarta');
 $waktu=date('Y-m-d H:i:s');
-include_once("../../inc/db_connect.php");
+include_once("../../config/db_connect.php");
 $idp=$_REQUEST['id'];
 $smt=$_REQUEST['smt'];
 $tapel=$_REQUEST['tapel'];

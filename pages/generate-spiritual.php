@@ -1,5 +1,5 @@
 					<header class="page-header">
-						<h2>Data Kesehatan</h2>
+						<h2>Rapor Spiritual</h2>
 						<div class="right-wrapper text-end">
 							<ol class="breadcrumbs">
 								<li>
@@ -7,7 +7,7 @@
 										<i class="bx bx-home-alt"></i>
 									</a>
 								</li>
-								<li><span>Data Kesehatan</span></li>
+								<li><span>Rapor Spiritual</span></li>
 							</ol>
 							<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
 						</div>
@@ -23,7 +23,7 @@
 										<select class="form-select" id="kelas" name="kelas">
 											<option value="0">Pilih Rombel</option>
 											<?php 
-											$sql4 = "select * from rombel where tapel='$tapel' order by nama_rombel asc";
+											$sql4 = "select * from rombel where tapel='$tapel' and kurikulum='Kurikulum 2013' order by nama_rombel asc";
 											$query4 = $connect->query($sql4);
 											while($nk=$query4->fetch_assoc()){
 												
@@ -33,11 +33,21 @@
 										</select>
 										<?php }else{ ?>
 										<select class="form-select" id="kelas" name="kelas">
-											<option value="<?=$kelas;?>"><?=$kelas;?></option>
+											<option value="0">Pilih Rombel</option>
+											<?php 
+											$sql4 = "select * from rombel where tapel='$tapel' and pai='$idku' and kurikulum='Kurikulum 2013' order by nama_rombel asc";
+											$query4 = $connect->query($sql4);
+											$ak=0;
+											while($nk=$query4->fetch_assoc()){
+											?>
+											<option value="<?=$nk['nama_rombel'];?>"><?=$nk['nama_rombel'];?></option>
+											<?php 
+											}	
+											?>
 										</select>
 										<?php }; ?>
 									</div>
-										<h2 class="card-title">Data Kesehatan</h2>
+										<h2 class="card-title">Rapor Spiritual</h2>
 								</header>
 								<div class="card-body">
 									
@@ -45,14 +55,8 @@
 										<thead>
 											<tr>
 												<th width="5%"></th>
-												<th width="35%">Nama Siswa</th>
-												<th width="10%">Tinggi (cm)</th>
-												<th width="10%">Berat (Kg)</th>
-												<th width="10%">Pendengaran</th>
-												<th width="10%">Penglihatan</th>
-												<th width="10%">Gigi</th>
-												<th width="10%">Lainnya</th>
-												
+												<th width="30%">Nama Siswa</th>
+												<th width="65%">Deskripsi Spiritual</th>
 											</tr>
 										</thead>
 										<tbody>				
@@ -63,10 +67,10 @@
 						</div>
 					</div>
 					
-									<div class="modal fade" id="modalkesehatan" tabindex="-1" aria-hidden="true">
+									<div class="modal fade" id="modalekskul" tabindex="-1" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
-												<form id="kesehatanForm" method="POST" action="modul/rapor/simpan-kesehatan.php" class="form">
+												<form id="ekskulForm" method="POST" action="modul/rapor/update-spiritual.php" class="form">
 													<div class="kesehatan-data"></div>
 												</form>
 											</div>

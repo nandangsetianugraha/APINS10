@@ -1,5 +1,5 @@
 					<header class="page-header">
-						<h2>Data Kesehatan</h2>
+						<h2>Data Absensi</h2>
 						<div class="right-wrapper text-end">
 							<ol class="breadcrumbs">
 								<li>
@@ -7,7 +7,7 @@
 										<i class="bx bx-home-alt"></i>
 									</a>
 								</li>
-								<li><span>Data Kesehatan</span></li>
+								<li><span>Data Absensi</span></li>
 							</ol>
 							<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
 						</div>
@@ -37,7 +37,7 @@
 										</select>
 										<?php }; ?>
 									</div>
-										<h2 class="card-title">Data Kesehatan</h2>
+										<h2 class="card-title">Data Absensi</h2>
 								</header>
 								<div class="card-body">
 									
@@ -45,14 +45,10 @@
 										<thead>
 											<tr>
 												<th width="5%"></th>
-												<th width="35%">Nama Siswa</th>
-												<th width="10%">Tinggi (cm)</th>
-												<th width="10%">Berat (Kg)</th>
-												<th width="10%">Pendengaran</th>
-												<th width="10%">Penglihatan</th>
-												<th width="10%">Gigi</th>
-												<th width="10%">Lainnya</th>
-												
+												<th width="30%">Nama Siswa</th>
+												<th width="10%">Sakit</th>
+												<th width="10%">Ijin</th>
+												<th width="10%">Alpha</th>
 											</tr>
 										</thead>
 										<tbody>				
@@ -63,10 +59,10 @@
 						</div>
 					</div>
 					
-									<div class="modal fade" id="modalkesehatan" tabindex="-1" aria-hidden="true">
+									<div class="modal fade" id="modalekskul" tabindex="-1" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
-												<form id="kesehatanForm" method="POST" action="modul/rapor/simpan-kesehatan.php" class="form">
+												<form id="ekskulForm" method="POST" action="modul/rapor/simpan-data-absensi.php" class="form">
 													<div class="kesehatan-data"></div>
 												</form>
 											</div>
