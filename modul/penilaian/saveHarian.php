@@ -13,10 +13,14 @@ $nilai=$_REQUEST['value'];
 $tema=$_REQUEST['tema'];
 $kd=$_REQUEST['kd'];
 $jns=$_REQUEST['jns'];
+$output = array('success' => false, 'messages' => array());
 $nama=$connect->query("select * from siswa where peserta_didik_id='$idp'")->fetch_assoc();
 $pelajaran=$connect->query("select * from mapel where id_mapel='$mpid'")->fetch_assoc();
 if(is_numeric($nilai)){
-    if($nilai>100){}else{
+    if($nilai>100){
+		$output['success'] = false;
+		$output['messages'] = 'Nilai diatas 100';
+	}else{
         $cek="select * from nh where id_pd='$idp' AND kelas='$ab' AND smt='$smt' AND tapel='$tapel' AND mapel='$mpid' and tema='$tema' and kd='$kd' and jns='$jns'";
         $ada = $connect->query($cek)->num_rows;
         if ($ada>0){
@@ -39,10 +43,15 @@ if(is_numeric($nilai)){
 		$hasil1=$connect->query($sql);
 		$hasil2=$connect->query($sql1);
         if($hasil1===true and $hasil2===true){
-			echo "saved";
+			$output['success'] = true;
+			$output['messages'] = 'OK';
 		}else{
-			echo "gagal";
+			$output['success'] = false;
+			$output['messages'] = 'Gagal';
 		}
     };
+}else{
+	$output['success'] = false;
+	$output['messages'] = 'Bukan Angka';
 };
-?>
+echo json_encode($output);

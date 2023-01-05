@@ -22,6 +22,7 @@ $(document).ready(function(){
 			});
 	temaTable = $('#kt_table_users').DataTable( {
 			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 			"searching": true,
 			"paging":false,
 			"ajax": "modul/siswa/absensiku.php?kelas="+kelas+"&tapel="+tapel+"&tgl="+tabsen+"&smt="+smt
@@ -55,6 +56,7 @@ $(document).ready(function(){
 			});
 		temaTable = $('#kt_table_users').DataTable( {
 			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 			"searching": true,
 			"paging":false,
 			"ajax": "modul/siswa/absensiku.php?kelas="+kelas+"&tapel="+tapel+"&tgl="+tabsen+"&smt="+smt
@@ -86,6 +88,7 @@ $(document).ready(function(){
 			});
 			temaTable = $('#kt_table_users').DataTable( {
 				"destroy":true,
+				"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 				"searching": true,
 				"paging":false,
 				"ajax": "modul/siswa/absensiku.php?kelas="+kelas+"&tapel="+tapel+"&tgl="+tabsen+"&smt="+smt

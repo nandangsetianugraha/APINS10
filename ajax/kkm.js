@@ -8,6 +8,7 @@ $(document).ready(function() {
 	var mp=$('#mp').val();
 	KD1 = $('#KD1').DataTable( {
 		"destroy":true,
+		"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 		"searching": false,
 		"ajax": "modul/administrasi/kkmku.php?kelas="+kelas+"&tapel="+tapel+"&mapel="+mp,
 		"order": []
@@ -41,6 +42,7 @@ $(document).ready(function() {
 		});
 		KD1 = $('#KD1').DataTable( {
 			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 			"searching": false,
 			"ajax": "modul/administrasi/kkmku.php?kelas="+kelas+"&tapel="+tapel+"&mapel="+mp,
 			"order": []
@@ -54,6 +56,7 @@ $(document).ready(function() {
 		var mp=$('#mp').val();
 		KD1 = $('#KD1').DataTable( {
 			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 			"searching": false,
 			"ajax": "modul/administrasi/kkmku.php?kelas="+kelas+"&tapel="+tapel+"&mapel="+mp,
 			"order": []
@@ -94,7 +97,7 @@ $(document).ready(function() {
 					$('#'+response.KD).val(response.rata);
 				}
 				$(editableObj).attr('data-old_value',editableObj.innerHTML);
-				$(editableObj).css("background","#FDFDFD");	
+				$(editableObj).css("background","#FFF url(checkup.png) no-repeat right");	
 					
 				// set updated value as old value
 				

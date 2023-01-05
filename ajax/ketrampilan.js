@@ -110,7 +110,7 @@ $(document).ready(function(){
 				console.log(response);
 				// set updated value as old value
 				$(editableObj).attr('data-old_value',editableObj.innerHTML);
-				$(editableObj).css("background","#FDFDFD");	
+				$(editableObj).css("background","#FFF url(checkup.png) no-repeat right");	
 				
 			}          
 	   });

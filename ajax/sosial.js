@@ -6,6 +6,7 @@ $(document).ready(function(){
 	var smt = $('#smt').val();
 	temaTable = $('#kt_table_users').DataTable( {
 			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 			"searching": true,
 			"paging":false,
 			"ajax": "modul/penilaian/sosial.php?kelas="+kelas+"&tapel="+tapel+"&smt="+smt
@@ -20,6 +21,7 @@ $(document).ready(function(){
 		var smt = $('#smt').val();
 		temaTable = $('#kt_table_users').DataTable( {
 			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 			"searching": true,
 			"paging":false,
 			"ajax": "modul/penilaian/sosial.php?kelas="+kelas+"&tapel="+tapel+"&smt="+smt

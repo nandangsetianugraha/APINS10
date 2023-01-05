@@ -1,17 +1,13 @@
 <?php
 function base_url($param = []) {
-
   $base_url = 'http://localhost:8080/aljannah/v10/';
   $result = (!$param) ? $base_url : $base_url . $param;
-
   return $result;
 };
 
 function base_home($param = []) {
-
   $base_url = 'http://localhost:8080/aljannah/v10/k13/';
   $result = (!$param) ? $base_url : $base_url . $param;
-
   return $result;
 };
 

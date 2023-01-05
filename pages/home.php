@@ -179,6 +179,18 @@
 												</div>
 											</section>
 											-->
+											<?php 
+											if($maintenis==1){
+											?>
+											<div class="alert alert-warning nomargin alert-dismissible fade show" role="alert">
+												<h4 class="font-weight-bold text-dark">Perbaikan Server!</h4>
+												<p>Server sedang dalam tahap perbaikan dan optimalisasi Database, hanya halaman ini yang bisa anda akses!</p>
+												<p>
+													<button class="btn btn-info mt-1 mb-1" type="button" onclick="keluar(1)">Keluar</button>
+													<button class="btn btn-default mt-1 mb-1" type="button">Beranda</button>
+												</p>
+											</div>
+											<?php } ?>
 											<div class="row mb-3">
 												<div class="col-xl-6">
 													<section class="card card-featured-left card-featured-primary mb-3">
@@ -280,33 +292,6 @@
 												</div>
 											</div>
 											
-											<h4 class="mb-3 pt-4 font-weight-semibold text-dark">Timeline</h4>
-
-											<div class="timeline timeline-simple mt-3 mb-3">
-												<div class="tm-body">
-													<div class="tm-title">
-														<h5 class="m-0 pt-2 pb-2 text-dark font-weight-semibold text-uppercase">November 2021</h5>
-													</div>
-													<ol class="tm-items">
-														<li>
-															<div class="tm-box">
-																<p class="text-muted mb-0">7 months ago.</p>
-																<p>
-																	Checkout! How cool is that!
-																</p>
-																<div class="thumbnail-gallery">
-																	<a class="img-thumbnail lightbox" href="img/projects/project-4.jpg" data-plugin-options='{ "type":"image" }'>
-																		<img class="img-fluid" width="215" src="img/projects/project-4.jpg">
-																		<span class="zoom">
-																			<i class="bx bx-search"></i>
-																		</span>
-																	</a>
-																</div>
-															</div>
-														</li>
-													</ol>
-												</div>
-											</div>
 										</div>
 
 									</div>

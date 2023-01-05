@@ -12,7 +12,7 @@ while($s=$query->fetch_assoc()) {
 	$sql2 = "select * from siswa where peserta_didik_id='$idpd'";
 	$query2 = $connect->query($sql2);
 	$j=$query2->fetch_assoc();
-	$sql1 = "select * from deskripsi_k13 where id_pd='$idpd' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and jns='k1'";
+	$sql1 = "select * from deskripsi_k13 where id_pd='$idpd' and kelas='$kelas' and smt='$smt' and tapel='$tapel' and jns='k2'";
 	$query1 = $connect->query($sql1);
 	$ada=$query1->num_rows;
 	if($ada>0){

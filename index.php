@@ -8,7 +8,7 @@
 				<!-- start: sidebar -->
 				<?php include "layout/sidebar.php"; ?>				<!-- end: sidebar -->
 				<section role="main" class="content-body">
-					<!-- Isi -->					<?php 					  if($halaman==="" or $halaman==="beranda"){						  if($maintenis==1 and $level<>11){							include "pages/perawatan.php";						  }else{							include 'pages/home.php';						  };					  }else{						  if($maintenis==1 and $level<>11){							include "pages/perawatan.php";						  }else{							if($norombel){								include "pages/norombel.php";							}else{								if( file_exists('pages/' . $halaman . '.php') ) {									include 'pages/' . $halaman . '.php';								}else{									include "pages/error.php";								}							}						  }					  };					?>
+					<!-- Isi -->					<?php 					  if($halaman==="" or $halaman==="beranda"){						  include 'pages/home.php';					  }else{						  if($maintenis==1 and $level<>11){							include "pages/perawatan.php";						  }else{							if($norombel){								include "pages/norombel.php";							}else{								if( file_exists('pages/' . $halaman . '.php') ) {									include 'pages/' . $halaman . '.php';								}else{									include "pages/error.php";								}							}						  }					  };					?>
 				</section>
 			</div>
 			<?php include "layout/aside.php"; ?>

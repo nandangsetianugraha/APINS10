@@ -7,6 +7,7 @@ $(document).ready(function() {
 	var mp = $('#mp').val();
 	temaTable = $('#temaTable').DataTable( {
 		"destroy":true,
+		"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 		"searching": false,
 		"ajax": "modul/administrasi/tp.php?kelas="+kelas+"&smt="+smt+"&lm="+materi+"&mp="+mp,
 		"order": []
@@ -36,6 +37,7 @@ $(document).ready(function() {
 					var mp = $('#mp').val();
 					temaTable = $('#temaTable').DataTable( {
 						"destroy":true,
+						"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 						"searching": false,
 						"ajax": "modul/administrasi/tp.php?kelas="+kelas+"&smt="+smt+"&lm="+materi+"&mp="+mp,
 						"order": []
@@ -68,6 +70,7 @@ $(document).ready(function() {
 					var mp = $('#mp').val();
 					temaTable = $('#temaTable').DataTable( {
 						"destroy":true,
+						"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 						"searching": false,
 						"ajax": "modul/administrasi/tp.php?kelas="+kelas+"&smt="+smt+"&lm="+materi+"&mp="+mp,
 						"order": []
@@ -82,6 +85,7 @@ $(document).ready(function() {
 			var mp = $('#mp').val();
 			temaTable = $('#temaTable').DataTable( {
 				"destroy":true,
+				"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 				"searching": false,
 				"ajax": "modul/administrasi/tp.php?kelas="+kelas+"&smt="+smt+"&lm="+materi+"&mp="+mp,
 				"order": []

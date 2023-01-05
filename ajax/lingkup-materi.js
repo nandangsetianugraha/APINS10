@@ -7,6 +7,7 @@ $(document).ready(function() {
 	var mp = $('#mp').val();
 	temaTable = $('#temaTable').DataTable( {
 		"destroy":true,
+		"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 		"searching": false,
 		"ajax": "modul/administrasi/lm.php?kelas="+kelas+"&smt="+smt+"&tapel="+tapel+"&mp="+mp,
 		"order": []
@@ -41,6 +42,7 @@ $(document).ready(function() {
 			$("#nilaiHarian").hide();
 			temaTable = $('#temaTable').DataTable( {
 				"destroy":true,
+				"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 				"searching": false,
 				"ajax": "modul/administrasi/lm.php?kelas="+kelas+"&smt="+smt+"&tapel="+tapel+"&mp="+mp,
 				"order": []

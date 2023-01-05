@@ -6,6 +6,7 @@ $(document).ready(function() {
 		var smt=$('#smt').val();
 		temaTable = $('#temaTable').DataTable( {
 			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 			"searching": false,
 			"ajax": "modul/administrasi/temaku.php?kelas="+kelas+"&smt="+smt,
 			"order": []
@@ -17,6 +18,7 @@ $(document).ready(function() {
 		var smt=$('#smt').val();
 		temaTable = $('#temaTable').DataTable( {
 			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 			"searching": false,
 			"ajax": "modul/administrasi/temaku.php?kelas="+kelas+"&smt="+smt,
 			"order": []

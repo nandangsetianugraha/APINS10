@@ -7,12 +7,14 @@ $(document).ready(function() {
 	var mp=$('#mp').val();
 	KD1 = $('#KD1').DataTable( {
 		"destroy":true,
+		"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 		"searching": false,
 		"ajax": "modul/administrasi/petaKD.php?kelas="+kelas+"&smt="+smt+"&peta=3&mp="+mp,
 		"order": []
 	} );
 	KD2 = $('#KD2').DataTable( {
 		"destroy":true,
+		"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 		"searching": false,
 		"ajax": "modul/administrasi/petaKD.php?kelas="+kelas+"&smt="+smt+"&peta=4&mp="+mp,
 		"order": []
@@ -33,12 +35,14 @@ $(document).ready(function() {
 		});
 		KD1 = $('#KD1').DataTable( {
 			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 			"searching": false,
 			"ajax": "modul/administrasi/petaKD.php?kelas="+kelas+"&smt="+smt+"&peta=3&mp="+mp,
 			"order": []
 		} );
 		KD2 = $('#KD2').DataTable( {
 			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 			"searching": false,
 			"ajax": "modul/administrasi/petaKD.php?kelas="+kelas+"&smt="+smt+"&peta=4&mp="+mp,
 			"order": []
@@ -51,12 +55,14 @@ $(document).ready(function() {
 		var mp=$('#mp').val();
 		KD1 = $('#KD1').DataTable( {
 			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 			"searching": false,
 			"ajax": "modul/administrasi/petaKD.php?kelas="+kelas+"&smt="+smt+"&peta=3&mp="+mp,
 			"order": []
 		} );
 		KD2 = $('#KD2').DataTable( {
 			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 			"searching": false,
 			"ajax": "modul/administrasi/petaKD.php?kelas="+kelas+"&smt="+smt+"&peta=4&mp="+mp,
 			"order": []
