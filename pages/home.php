@@ -38,7 +38,7 @@
 												</div>
 												<div class="profile-info">
 													<h4 class="name font-weight-semibold"><?=$bioku['nama'];?></h4>
-													<h5 class="role"><?=$jns_ptk['jenis_ptk'];?></h5>
+													<h5 class="role"><?=$jns_ptk['jenis_ptk'];?> <?php if($level==98 or $level==97) echo $kelas; ?></h5>
 													<div class="profile-footer">														
 														<a href="#" data-bs-toggle="modal" data-bs-target="#ubahPP" id="btnPP">(ubah gambar)</a>	
 													</div>
@@ -109,9 +109,11 @@
 																	<label class="todo-label" for="todoListItem2"><span>[<?=$mlogs['logDate'];?>] <?=$nama['nama'];?> - <?=$mlogs['activity'];?></span></label>
 																</div>
 																<div class="todo-actions">
+																	<?php if($level==11){ ?>
 																	<a href="#" onclick="removeAktivitas(<?=$idlog;?>)">
 																		<i class="fas fa-times"></i>
 																	</a>
+																	<?php } ?>
 																</div>
 															</li>
 															<?php }}else{ ?>
@@ -186,8 +188,8 @@
 												<h4 class="font-weight-bold text-dark">Perbaikan Server!</h4>
 												<p>Server sedang dalam tahap perbaikan dan optimalisasi Database, hanya halaman ini yang bisa anda akses!</p>
 												<p>
-													<button class="btn btn-info mt-1 mb-1" type="button" onclick="keluar(1)">Keluar</button>
-													<button class="btn btn-default mt-1 mb-1" type="button">Beranda</button>
+													<button class="btn btn-danger mt-1 mb-1" type="button" onclick="keluar(1)">Keluar</button>
+													<button class="btn btn-primary mt-1 mb-1" type="button">Beranda</button>
 												</p>
 											</div>
 											<?php } ?>

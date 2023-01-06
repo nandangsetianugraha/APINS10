@@ -14,16 +14,85 @@
 				            <nav id="menu" class="nav-main" role="navigation">
 
 				                <ul class="nav nav-main">
-				                    <li>
+									<li>
 				                        <a class="nav-link" href="<?=base_url();?>">
 				                            <i class="bx bx-home-alt" aria-hidden="true"></i>
 				                            <span>Beranda</span>
 				                        </a>                        
 				                    </li>
+									<?php if($level==11){ ?>
+									<li class="nav-parent">
+				                        <a class="nav-link" href="#">
+				                            <i class="bx bx-cog" aria-hidden="true"></i>
+				                            <span>Setting Aplikasi</span>
+				                        </a>
+				                        <ul class="nav nav-children">
+											<li class="nav-parent">
+				                                <a class="nav-link" href="#">
+				                                    <i class="bx bx-lock-alt" aria-hidden="true"></i>
+													<span>Manajemen Aplikasi</span>
+				                                </a>
+				                                <ul class="nav nav-children">
+				                                    <li>
+				                                        <a class="nav-link" href="<?=base_url();?>setting-tahun-ajaran">
+				                                            Tahun Ajaran
+				                                        </a>
+				                                    </li>
+				                                    <li>
+				                                        <a class="nav-link" href="<?=base_url();?>tambah-siswa">
+				                                            Tambah Siswa Baru
+				                                        </a>
+				                                    </li>
+				                                </ul>
+				                            </li>
+											<li class="nav-parent">
+				                                <a class="nav-link" href="#">
+				                                    <i class="bx bx-user-pin" aria-hidden="true"></i>
+													<span>Manajemen Siswa</span>
+				                                </a>
+				                                <ul class="nav nav-children">
+				                                    <li>
+				                                        <a class="nav-link" href="<?=base_url();?>setting-rombel">
+				                                            Rombel
+				                                        </a>
+				                                    </li>
+				                                    <li>
+				                                        <a class="nav-link" href="<?=base_url();?>tambah-siswa">
+				                                            Tambah Siswa Baru
+				                                        </a>
+				                                    </li>
+				                                </ul>
+				                            </li>
+											<li class="nav-parent">
+				                                <a class="nav-link" href="#">
+				                                    <i class="bx bx-user" aria-hidden="true"></i>
+													<span>Manajemen PTK</span>
+				                                </a>
+				                                <ul class="nav nav-children">
+				                                    <li>
+				                                        <a class="nav-link" href="<?=base_url();?>pengguna">
+				                                            Daftar Pengguna
+				                                        </a>
+				                                    </li>
+				                                    <li>
+				                                        <a class="nav-link" href="<?=base_url();?>data-ptk">
+				                                            Daftar PTK
+				                                        </a>
+				                                    </li>
+													<li>
+				                                        <a class="nav-link" href="<?=base_url();?>tambah-ptk">
+				                                            Tambah PTK Baru
+				                                        </a>
+				                                    </li>
+				                                </ul>
+				                            </li>
+				                        </ul>
+				                    </li>
+									<?php } ?>
 									<?php if($level==98 or $level==97 or $level==11){ ?>
 				                    <li class="nav-parent">
 				                        <a class="nav-link" href="#">
-				                            <i class="bx bx-cart-alt" aria-hidden="true"></i>
+				                            <i class="bx bx-user-circle" aria-hidden="true"></i>
 				                            <span>Data Siswa</span>
 				                        </a>
 				                        <ul class="nav nav-children">
@@ -385,9 +454,9 @@
 									<?php } ?>
 									
 				                    <li>
-				                        <a class="nav-link" href="<?=base_url();?>changelog">
-				                            <i class="bx bx-book-alt" aria-hidden="true"></i>
-				                            <span>Changelog</span>
+				                        <a class="nav-link" href="#" onclick="keluar(1)">
+				                            <i class="bx bx-power-off" aria-hidden="true"></i>
+				                            <span>Keluar</span>
 				                        </a>                        
 				                    </li>
 
