@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2023 at 05:02 PM
+-- Generation Time: Jan 07, 2023 at 04:54 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -42157,6 +42157,7 @@ CREATE TABLE `penempatan` (
 --
 
 CREATE TABLE `pengguna` (
+  `id` int(11) NOT NULL,
   `ptk_id` varchar(36) NOT NULL,
   `username` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
@@ -42170,8 +42171,8 @@ CREATE TABLE `pengguna` (
 -- Dumping data for table `pengguna`
 --
 
-INSERT INTO `pengguna` (`ptk_id`, `username`, `password`, `nama_lengkap`, `level`, `verified`, `gambar`) VALUES
-('009ab849-2cf5-e011-b7ae-9b859d73d4ca', 'admin', '$2y$10$t0vvWrtPt/IzZRriLlI9NerPHI9ue4jSszMs73xY7slHzwHPpNPLm', 'Administrator', 11, 1, 'avatar_1234914804.jpeg');
+INSERT INTO `pengguna` (`id`, `ptk_id`, `username`, `password`, `nama_lengkap`, `level`, `verified`, `gambar`) VALUES
+(1, '009ab849-2cf5-e011-b7ae-9b859d73d4ca', 'admin', '$2y$10$nHhU9luEd4o9T8rcr33lLuEz.OshJGT6u/rDVvDeKULHEQ7ZETdqa', 'Administrator', 11, 1, 'avatar_1234914804.jpeg');
 
 -- --------------------------------------------------------
 
@@ -43947,7 +43948,7 @@ ALTER TABLE `penempatan`
 -- Indexes for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  ADD PRIMARY KEY (`ptk_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `penghasilan`
@@ -44771,6 +44772,12 @@ ALTER TABLE `pend_terakhir`
 --
 ALTER TABLE `penempatan`
   MODIFY `id_rombel` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pengumuman`
