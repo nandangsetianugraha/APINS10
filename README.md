@@ -20,3 +20,9 @@ Penggabungan Penilaian Kurikulum 2013 dan Kurikulum Merdeka dalam satu aplikasi.
   * [Donation](#donation)
   * [Credits](#credits)
   * [License](#license)
+
+#installation
+* buat database
+* ubah settingan database pada file db_connect.php dan db.php di folder config
+* ubah baris 11 pada file index.php sesuaikan nilainya dengan params url
+misalnya diinstal di domain www.domain.com maka ubah $params[3] menjadi $params[1] dan ubah $tipe = count($params)>4 ? $params[4] : ''; menjadi $tipe = count($params)>2 ? $params[2] : '';
