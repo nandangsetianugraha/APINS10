@@ -1,10 +1,40 @@
 "use strict"; 
+var temaTable;
 $(document).ready(function(){
+	var stst = $('#stst').val();
+	var tapel = $('#tapel').val();
+	var smt = $('#smt').val();
+	var urls=$('#urls').val();
+	temaTable = $('#kt_table_users').DataTable( {
+			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
+			"searching": true,
+			"paging":true,
+			"ajax": urls+"modul/kepegawaian/daftar-ptk.php?status="+stst+"&smt="+smt+"&tapel="+tapel
+		} );
+	
+	$('#caridata').on( 'keyup', function () {
+		temaTable.search( this.value ).draw();
+	} );
+	$('#stst').change(function(){
+			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
+		var stst = $('#stst').val();
+		var tapel = $('#tapel').val();
+		var smt = $('#smt').val();
+		temaTable = $('#kt_table_users').DataTable( {
+			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
+			"searching": true,
+			"paging":true,
+			"ajax": urls+"modul/kepegawaian/daftar-ptk.php?status="+stst+"&smt="+smt+"&tapel="+tapel
+		} );
+	});
 	$('#upload_image').on('change', function(e){
 		e.preventDefault();
 		var idptks = $('#idptks').val();
+		var urls=$('#urls').val();
 		$.ajax({
-			url:"images/upload.php",
+			url: urls+"images/upload.php",
 			type: "POST",
 			data: new FormData(this),
 			contentType: false,
@@ -15,7 +45,7 @@ $(document).ready(function(){
 			  //$('#uploadimageModal').modal('hide');
 			  $('#uploaded_image').html(data);
 			  //swal('Foto Profil berhasil diubah', {buttons: false,timer: 1000,});
-			  setTimeout(function () {window.open("./","_self");},1000)
+			  setTimeout(function () {window.open(urls+"ptk","_self");},1000)
 			}
 		  });
 	});

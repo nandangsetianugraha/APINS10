@@ -3,8 +3,8 @@
 			?>
 			<header class="header">
 				<div class="logo-container">
-					<a href="./" class="logo">
-						<img src="img/logo1.png" width="75" height="35" alt="Porto Admin" />
+					<a href="<?=base_url();?>" class="logo">
+						<img src="<?=base_url();?>img/logo1.png" width="75" height="35" alt="Porto Admin" />
 					</a>
 
 					<div class="d-md-none toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
@@ -86,11 +86,11 @@
 								<li class="divider"></li>
 								<?php if($kurikulum=='Kurikulum 2013'){ ?>
 								<li>
-									<a role="menuitem" tabindex="-1" href="layout/change.php?kur=2"><i class="bx bx-user-circle"></i> Kurikulum Merdeka</a>
+									<a role="menuitem" tabindex="-1" href="<?=base_url();?>layout/change.php?kur=2"><i class="bx bx-user-circle"></i> Kurikulum Merdeka</a>
 								</li>
 								<?php }else{ ?>
 								<li>
-									<a role="menuitem" tabindex="-1" href="layout/change.php?kur=1"><i class="bx bx-user-circle"></i> Kurikulum 2013</a>
+									<a role="menuitem" tabindex="-1" href="<?=base_url();?>layout/change.php?kur=1"><i class="bx bx-user-circle"></i> Kurikulum 2013</a>
 								</li>
 								<?php } ?>
 							</ul>
@@ -103,7 +103,7 @@
 					<div id="userbox" class="userbox">
 						<a href="#" data-bs-toggle="dropdown">
 							<figure class="profile-picture" id="image-place">
-								<img src="images/ptk/<?=$avatar;?>" alt="Joseph Doe" class="rounded-circle" data-lock-picture="images/ptk/<?=$avatar;?>" />
+								<img src="<?=base_url();?>images/ptk/<?=$avatar;?>" alt="Joseph Doe" class="rounded-circle" data-lock-picture="images/ptk/<?=$avatar;?>" />
 							</figure>
 							<div class="profile-info" data-lock-name="<?=$bioku['nama'];?>" data-lock-email="<?=$bioku['email'];?>">
 								<span class="name"><?=$bioku['nama'];?></span>

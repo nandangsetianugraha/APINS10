@@ -40,6 +40,7 @@
 		<script src="<?=base_url();?>js/bootstrap-datepicker.js"></script>
 		<script src="<?=base_url();?>vendor/sweetalert2/sweetalert2.all.min.js"></script>
 		<script src="<?=base_url();?>vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+		<script src="<?=base_url();?>vendor/isotope/isotope.js"></script>
 
 		<!-- Theme Base, Components and Settings -->
 		<script src="<?=base_url();?>js/theme.js"></script>

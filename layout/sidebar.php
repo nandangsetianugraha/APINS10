@@ -75,7 +75,7 @@
 				                                        </a>
 				                                    </li>
 				                                    <li>
-				                                        <a class="nav-link" href="<?=base_url();?>data-ptk">
+				                                        <a class="nav-link" href="<?=base_url();?>ptk">
 				                                            Daftar PTK
 				                                        </a>
 				                                    </li>

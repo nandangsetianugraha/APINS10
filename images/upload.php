@@ -1,4 +1,53 @@
 <?php
+function compress($source, $destination, $quality){
+	$info = getimagesize($source);
+	if ($info['mime'] == 'image/jpeg') $image = imagecreatefromjpeg($source);
+	elseif ($info['mime'] == 'image/gif') $image = imagecreatefromgif($source);
+	elseif ($info['mime'] == 'image/png') $image = imagecreatefrompng($source);
+	imagejpeg($image, $destination, $quality);
+	return $destination;
+};
+function UploadGambar($img_name){
+	header("Content-type: image/jpeg");
+	 
+	//tempat direktory gambar
+	$vdir_upload = "image/";
+	$vfile_upload = $vdir_upload . $img_name;
+	 
+	//Simpan gambar dalam ukuran asli
+	move_uploaded_file($_FILES["img"]["tmp_name"], $vfile_upload);
+	 
+	//identitas file asli
+	$im_src = imagecreatefromjpeg($vfile_upload);
+	$src_width = imageSX($im_src);
+	$src_height
+	= imageSY($im_src);
+	 
+	//Simpan dalam versi small 110px
+	$dst_width = 110;
+	$dst_height = ($dst_width/$src_width)*$src_height;
+	 
+	//proses perubahan ukuran
+	$im = imagecreatetruecolor($dst_width,$dst_height);
+	imagecopyresampled($im, $im_src, 0, 0, 0, 0, $dst_width, $dst_height, $src_width, $src_height);
+	 
+	//Simpan gambar
+	imagejpeg($im,$vdir_upload . "small_" . $img_name);
+	 
+	//Simpan dalam ukuran medium 320px
+	$dst_width = 320;
+	$dst_height = ($dst_width/$src_width)*$src_height;
+	 
+	//proses untuk perubahan ukuran
+	$im = imagecreatetruecolor($dst_width,$dst_height);
+	imagecopyresampled($im, $im_src, 0, 0, 0, 0, $dst_width, $dst_height, $src_width, $src_height);
+	 
+	//menyimpan gambar
+	imagejpeg($im,$vdir_upload . "medium_" . $img_name);
+	 
+	imagedestroy($im_src);
+	imagedestroy($im);
+}
 require_once "../config/db_connect.php";
 header('Content-Type: application/json');
 $idp=strip_tags($connect->real_escape_string($_GET['idptk']));
@@ -17,7 +66,7 @@ if(isset($_FILES['image']['type'])){
 
 		&& 
 		
-		($_FILES['image']['size'] < 1000000)//Approx. 100kb files can be up.
+		($_FILES['image']['size'] < 600000)//Approx. 100kb files can be up.
 		
 		&& 
 		
@@ -42,11 +91,14 @@ if(isset($_FILES['image']['type'])){
 				echo json_encode($data);
 			
 			}else{
-				
+				$exte = $_FILES['image']['type'];
+				$imageName = 'avatar_'.rand(). '.png';
 				$filename = $_FILES['image']['name'];
 				$sourcePath = $_FILES['image']['tmp_name']; // Storing source path of the file in a variable
-				$targetPath = 'ptk/'.$filename; // Target path where file is to be stored
+				$targetPath = 'ptk/'.$imageName; // Target path where file is to be stored
+				
 				move_uploaded_file($sourcePath,$targetPath) ; // Moving Up file
+				
 				$resultset=$connect->query("SELECT * FROM ptk WHERE ptk_id = '$idp'")->num_rows;
 				if($resultset>0) {     
 					$ava=$connect->query("SELECT * FROM ptk WHERE ptk_id = '$idp'")->fetch_assoc();
@@ -55,7 +107,7 @@ if(isset($_FILES['image']['type'])){
 					if(file_exists($hapusFile)){
 						unlink($hapusFile);
 					};
-					$namaGBR=strip_tags($connect->real_escape_string($filename));
+					$namaGBR=strip_tags($connect->real_escape_string($imageName));
 					$sql_update = "UPDATE ptk set gambar='$namaGBR' WHERE ptk_id = '$idp'";
 					$query1 = $connect->query($sql_update);
 				};
