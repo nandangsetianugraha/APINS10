@@ -10,7 +10,7 @@ $(document).ready(function(){
 			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 			"searching": true,
 			"paging":true,
-			"ajax": urls+"modul/kepegawaian/daftar-ptk.php?status="+stst+"&smt="+smt+"&tapel="+tapel
+			"ajax": urls+"modul/kepegawaian/daftar-pengguna.php?status="+stst+"&smt="+smt+"&tapel="+tapel
 		} );
 	
 	$('#caridata').on( 'keyup', function () {
@@ -26,7 +26,7 @@ $(document).ready(function(){
 			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
 			"searching": true,
 			"paging":true,
-			"ajax": urls+"modul/kepegawaian/daftar-ptk.php?status="+stst+"&smt="+smt+"&tapel="+tapel
+			"ajax": urls+"modul/kepegawaian/daftar-pengguna.php?status="+stst+"&smt="+smt+"&tapel="+tapel
 		} );
 	});
 	$('#upload_image').on('change', function(e){
@@ -84,7 +84,7 @@ $(document).ready(function(){
 					  icon: 'success',
 					  title: response.messages
 					});
-					setTimeout(function () {window.open(urls+"ptk","_self");},1000)
+					setTimeout(function () {window.open(urls+"pengguna","_self");},1000)
 					//setTimeout(function () {window.open("./","_self");},1000)
 					// reset the form
 				} else {
@@ -295,6 +295,97 @@ function PopupCenter(pageURL, title,w,h) {
 										$("#collapse1One").html(data);
 									}
 								});
+							} else {
+								Swal.fire("Kesalahan",response.messages,"error");
+							}
+						}
+					});
+			  }
+			})
+			
+		} else {
+			Swal.fire("Kesalahan","Error Sistem","error");
+		}
+	};
+	function removePengguna(id = null) {
+		if(id) {
+			// click on remove button
+			
+			Swal.fire({
+			  title: 'Yakin dinonaktifkan?',
+			  text: "Apakah anda yakin Menonaktifkan Pengguna ini?",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Ya!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				$.ajax({
+						url: 'modul/kepegawaian/non-pengguna.php',
+						type: 'post',
+						data: {member_id : id},
+						dataType: 'json',
+						success:function(response) {
+							if(response.success == true) {						
+								// refresh the table
+								var stst = $('#stst').val();
+								var tapel = $('#tapel').val();
+								var smt = $('#smt').val();
+								var urls = $('#urls').val();
+								temaTable = $('#kt_table_users').DataTable( {
+									"destroy":true,
+									"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
+									"searching": true,
+									"paging":true,
+									"ajax": urls+"modul/kepegawaian/daftar-pengguna.php?status="+stst+"&smt="+smt+"&tapel="+tapel
+								} );
+							} else {
+								Swal.fire("Kesalahan",response.messages,"error");
+							}
+						}
+					});
+			  }
+			})
+			
+		} else {
+			Swal.fire("Kesalahan","Error Sistem","error");
+		}
+	}
+	
+	function AktifPengguna(id = null) {
+		if(id) {
+			// click on remove button
+			
+			Swal.fire({
+			  title: 'Informasi',
+			  text: "Apakah anda yakin Aktivasi Pengguna ini?",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Ya!'
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				$.ajax({
+						url: 'modul/kepegawaian/aktif-pengguna.php',
+						type: 'post',
+						data: {member_id : id},
+						dataType: 'json',
+						success:function(response) {
+							if(response.success == true) {						
+								// refresh the table
+								var stst = $('#stst').val();
+								var tapel = $('#tapel').val();
+								var smt = $('#smt').val();
+								var urls = $('#urls').val();
+								temaTable = $('#kt_table_users').DataTable( {
+									"destroy":true,
+									"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
+									"searching": true,
+									"paging":true,
+									"ajax": urls+"modul/kepegawaian/daftar-pengguna.php?status="+stst+"&smt="+smt+"&tapel="+tapel
+								} );
 							} else {
 								Swal.fire("Kesalahan",response.messages,"error");
 							}

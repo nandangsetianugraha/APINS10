@@ -41,7 +41,14 @@ $(document).ready(function(){
 			type : form.attr('method'),
 			data : form.serialize(),
 			dataType : 'json',
+			beforeSend: function()
+			{	
+				$("#loading").show();
+				$(".loader").show();
+			},
 			success:function(response) {
+				$("#loading").hide();
+				$(".loader").hide();
 				if(response.success == true) {
 					const Toast = Swal.mixin({
 					  toast: true,
@@ -107,7 +114,14 @@ $(document).ready(function(){
 			type : form.attr('method'),
 			data : form.serialize(),
 			dataType : 'json',
+			beforeSend: function()
+			{	
+				$("#loading").show();
+				$(".loader").show();
+			},
 			success:function(response) {
+				$("#loading").hide();
+				$(".loader").hide();
 				if(response.success == true) {
 					const Toast = Swal.mixin({
 					  toast: true,
@@ -169,7 +183,14 @@ $(document).ready(function(){
 				url : 'modul/siswa/keluar-rombel.php',
 				data :  'siswa='+siswa+'&smt='+smt+'&tapel='+tapel,
 				dataType : 'json',
+				beforeSend: function()
+				{	
+					$("#loading").show();
+					$(".loader").show();
+				},
 				success: function (response) {
+					$("#loading").hide();
+					$(".loader").hide();
 					const Toast = Swal.mixin({
 					  toast: true,
 					  position: 'top-right',
@@ -218,7 +239,8 @@ $(document).ready(function(){
 					$(".loader").show();
 				},
 				success: function (response) {
-					
+					$("#loading").hide();
+					$(".loader").hide();
 					const Toast = Swal.mixin({
 					  toast: true,
 					  position: 'top-right',
@@ -269,13 +291,14 @@ $(document).ready(function(){
 				url : 'modul/siswa/luluskan.php',
 				data :  'smt='+smt+'&tapel='+tapel,
 				dataType : 'json',
-								beforeSend: function()
+				beforeSend: function()
 				{	
 					$("#loading").show();
 					$(".loader").show();
 				},
 				success: function (response) {
-					
+					$("#loading").hide();
+					$(".loader").hide();
 					const Toast = Swal.mixin({
 					  toast: true,
 					  position: 'top-right',

@@ -1,11 +1,19 @@
 <?php 
-require_once '../../config/config.php';
 require_once '../../config/db_connect.php';
+function random($panjang){
+   $karakter = 'abcdefghijklmnopqrstuvwxyz1234567890';
+   $string = '';
+   for($i = 0; $i < $panjang; $i++) {
+	$pos = rand(0, strlen($karakter)-1);
+	$string .= $karakter{$pos};
+   }
+   return $string;
+};
 //if form is submitted
-if($_POST) {	
 
+if($_POST) {	
 	$validator = array('success' => false, 'messages' => array());
-	$idp=strip_tags($connect->real_escape_string($_POST['ptkid']));
+	$idptk=strip_tags($connect->real_escape_string($_POST['ptkid']));
 	$nama=strip_tags($connect->real_escape_string($_POST['nama']));
 	$gelar=strip_tags($connect->real_escape_string($_POST['gelar']));
 	$jk=$_POST['jeniskelamin'];
@@ -23,21 +31,24 @@ if($_POST) {
 	$query = $connect->query($sql);
 	$cks = $query->fetch_assoc();
 	$jnsptk=$cks['jenis_ptk'];
-	//$=$_POST[''];
-	//$=$_POST[''];
+	$id_pd1=random(8);
+	$id_pd2=random(4);
+	$id_pd3=random(4);
+	$id_pd4=random(4);
+	$id_pd5=random(12);
+	$id_pd=$id_pd1.'-'.$id_pd2.'-'.$id_pd3.'-'.$id_pd4.'-'.$id_pd5;
 	if(empty($nama) || empty($tanggal)){
 		$validator['success'] = false;
 		$validator['messages'] = "Nama dan tanggal lahir tidak boleh kosong!";
 	}else{
-		$sql1 = "UPDATE ptk SET nama='$nama', gelar='$gelar', jenis_kelamin='$jk', tempat_lahir='$tempat', tanggal_lahir='$tanggal', nik='$nik', niy_nigk='$niy', nuptk='$nuptk', alamat_jalan='$alamat', email='$email', no_hp='$hp', status_kepegawaian_id='$statuspeg', jenis_ptk_id='$jenispeg' WHERE ptk_id='$idp'";
-		$query1 = $connect->query($sql1);
-//		$query2 = $connect->query("UPDATE pengguna SET level='$jenispeg' WHERE ptk_id='$idp'");
-		if($query1 === true) {			
+		$sql1 = "INSERT INTO ptk(ptk_id,nama,gelar,jenis_kelamin,tempat_lahir,tanggal_lahir,nik,niy_nigk,nuptk,status_kepegawaian_id,jenis_ptk_id,alamat_jalan,no_hp,email,status_keaktifan_id,gambar,nasabah_id) VALUES('$id_pd','$nama','$gelar','$jk','$tempat','$tanggal','$nik','$niy','$nuptk','$statuspeg','$jenispeg','$alamat','$hp','$email','1','user-default.png','0')";
+      	$query1 = $connect->query($sql1);
+		if($query1 === TRUE) {			
 			$validator['success'] = true;
-			$validator['messages'] = "Profil $nama berhasil diperbaharui!";	
+			$validator['messages'] = "Penambahan PTK berhasil dilakukan!";	
 		} else {		
 			$validator['success'] = false;
-			$validator['messages'] = "Ada yang salah sama server!!!";
+			$validator['messages'] = "Kesalahan Query Sistem";
 		};
 	};
 	// close the database connection

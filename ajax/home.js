@@ -29,7 +29,14 @@ $(document).ready(function(){
 			type : form.attr('method'),
 			data : form.serialize(),
 			dataType : 'json',
+			beforeSend: function()
+			{	
+				$("#loading").show();
+				$(".loader").show();
+			},
 			success:function(response) {
+				$("#loading").hide();
+				$(".loader").hide();
 				if(response.success == true) {
 					const Toast = Swal.mixin({
 					  toast: true,

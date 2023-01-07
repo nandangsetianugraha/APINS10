@@ -24,10 +24,9 @@ $output = array('data' => array());
 		
 		$gmb='
 		<div class="profile-picture" id="image-place">
-													<img src="'.base_url().'images/ptk/'.$gbr.'" width="60px">
-												</div>
-												';
-		
+			<img src="'.base_url().'images/ptk/'.$gbr.'" width="60px">
+		</div>
+		';
 		$actionButton = '
 				<div class="btn-group">
 					<a href="'.base_url().'ptk/'.$idp.'" type="button" class="mb-1 mt-1 me-1 btn btn-sm btn-default" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'"><i class="far fa-address-card"></i></a>

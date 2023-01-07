@@ -417,7 +417,7 @@
 												</div>
 												<div class="form-group col-md-6 border-top-0 pt-0">
 													<label for="inputZip">Password</label>
-													<input type="text" class="form-control" name="password">
+													<input type="password" class="form-control" name="password">
 												</div>
 											</div>
 											<div class="row">
