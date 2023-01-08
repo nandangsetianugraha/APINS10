@@ -56,7 +56,7 @@ $(document).ready(function(){
 				  icon: 'success',
 				  title: 'Photo Profil berhasil diubah'
 				})
-			  //setTimeout(function () {window.open(urls,"_self");},1000)
+			  setTimeout(function () {window.open(urls,"_self");},1000)
 			}
 		  });
 		})
