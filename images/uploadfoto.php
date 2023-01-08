@@ -1,7 +1,7 @@
 <?php
-require_once "../config/db_connect.php";
-$idp=strip_tags($connect->real_escape_string($_GET['idp']));
-//$idp=$_GET['idp'];
+require_once "../config/config.php";
+require_once "../config/db.php";
+$idp=$_GET['idp'];
 //upload.php
 
 if(isset($_POST["image"]))
@@ -20,26 +20,23 @@ if(isset($_POST["image"]))
 
 	$data = base64_decode($image_array_2[1]);
 
-	$imageName = 'avatar_'.rand(). '.png';
+	$imageName = 'avatar_'.rand().'.png';
 
-	file_put_contents('./ptk/'.$imageName, $data);
-	//$idp=strip_tags($connect->real_escape_string($_POST['nama']));
-	$resultset=$connect->query("SELECT * FROM ptk WHERE ptk_id = '$idp'")->num_rows;
-	//$sql_query = "SELECT * FROM ptk WHERE ptk_id = '".mysqli_escape_string($koneksi, $idp)."'";		
-		//$resultset = mysqli_query($koneksi, $sql_query) or die("database error:". mysqli_error($koneksi));		
-		if($resultset>0) {     
-			$ava=$connect->query("SELECT * FROM ptk WHERE ptk_id = '$idp'")->fetch_assoc();
+	file_put_contents('ptk/'.$imageName, $data);
+	$sql_query = "SELECT * FROM ptk WHERE ptk_id = '".mysqli_escape_string($koneksi, $idp)."'";		
+		$resultset = mysqli_query($koneksi, $sql_query) or die("database error:". mysqli_error($koneksi));		
+		if(mysqli_num_rows($resultset)) {     
+			$ava=mysqli_fetch_array($resultset);
 			$flama=$ava['gambar'];
-			$hapusFile = "./ptk/".$flama;
+			$hapusFile = "ptk/".$flama;
 			if(file_exists($hapusFile)){
 				unlink($hapusFile);
 			};
-			$namaGBR=strip_tags($connect->real_escape_string($imageName));
-			$sql_update = "UPDATE ptk set gambar='$namaGBR' WHERE ptk_id = '$idp'";
-			$query1 = $connect->query($sql_update);
+			$sql_update = "UPDATE ptk set gambar='".mysqli_escape_string($koneksi,$imageName)."' WHERE ptk_id = '".mysqli_escape_string($koneksi, $idp)."'";
+			mysqli_query($koneksi, $sql_update) or die("database error:". mysqli_error($koneksi));
 		};
 
-	echo '<img src="images/ptk/'.$imageName.'" alt="..." class="rounded-circle profile-widget-picture">';
+	echo '<img src="'.base_url().'images/ptk/'.$imageName.'" alt="..." class="rounded-circle profile-widget-picture">';
 
 }
 

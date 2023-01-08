@@ -22,6 +22,7 @@
 								<input type="hidden" name="tapel" id="tapel" class="form-control" value="<?=$tapel;?>" placeholder="Username">
 										<input type="hidden" name="smt" id="smt" class="form-control" value="<?=$smt;?>" placeholder="Username">
 										<input type="hidden" class="form-control" id="urls" value="<?=base_url();?>">
+										
 										<select class="form-select" id="stst" name="stst">
 											<option value="1">Aktif</option>
 											<option value="0">Mutasi Keluar</option>
@@ -113,51 +114,24 @@
 													$pp=$infoptk['gambar'];
 												};
 												?>
-												<div class="profile-picture" id="image-place">
+												<div class="profile-picture" id="uploaded_image">
 													<img src="<?=base_url();?>images/ptk/<?=$pp;?>">
-													<input type="hidden" class="form-control" id="urls" value="<?=base_url();?>">
 												</div>
 												<div class="profile-info">
 													<h4 class="name font-weight-semibold"><?=$infoptk['nama'];?></h4>
 													<h5 class="role"><?=$j_ptk['jenis_ptk'];?></h5>
 													<div class="profile-footer">														
-														<a href="#" data-bs-toggle="modal" data-bs-target="#ubahPP" id="btnPP">(ubah gambar)</a>	
+														<div id="imgChange">
+															<span>Ubah Foto</span>
+															<input type="file" accept="image/*" name="upload_image" id="upload_image">
+															<input type="hidden" id="idptks" value="<?=$idptk;?>" />
+															<input type="hidden" id="urls" value="<?=base_url();?>" />
+														</div>	
 													</div>
 												</div>
 											</div>
 
 										</header>
-										<div class="modal" id="ubahPP" tabindex="-1" role="dialog">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h5 class="modal-title">Poto Profil</h5>
-														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-													</div>
-													<form id="image-upload" action="<?=base_url();?>images/upload.php?idptk=<?=$tipe;?>" method="post" enctype="multipart/form-data">
-														<div class="modal-body">
-															<section class="card card-group">
-																<header class="card-header bg-primary w-100">
-																	<div class="widget-profile-info">
-																		<div class="profile-picture" id="preview">
-																			<img src="<?=base_url();?>images/ptk/<?=$pp;?>">
-																		</div>
-																		<div class="profile-info">
-																			<input type="file" name="image" id="image" required />
-																			<input type="hidden" name="idptks" id="idptks" value="<?=$tipe;?>" />
-																			<p class="loading"></p>
-																		</div>
-																	</div>
-																</header>
-															</section>
-														</div>
-														<div class="modal-footer">
-															<button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-														</div>
-													</form>
-												</div>
-											</div>
-										</div>
 										
 										<div id="accordion" class="w-100">
 											<div class="card card-accordion card-accordion-first">
@@ -318,6 +292,22 @@
 												</form>
 									</div>
 								
+						</div>
+					</div>
+					<div class="modal fade" id="uploadimageModal" tabindex="-1" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title">Photo Profil</h5>
+								</div>
+								<div class="modal-body">
+									<div id="image_demo" style="width:350px; margin-top:30px"></div>
+								</div>
+								<div class="modal-footer">
+									<button class="btn btn-success crop_image">Crop & Upload Image</button>
+									<button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+								</div>
+							</div>
 						</div>
 					</div>
 					<?php } ?>

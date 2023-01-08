@@ -46,7 +46,7 @@
 		<link rel="stylesheet" href="<?=base_url();?>vendor/datatables/media/css/dataTables.bootstrap5.css" />
 		<link rel="stylesheet" href="<?=base_url();?>vendor/sweetalert2/sweetalert2.min.css">
 		<link rel="stylesheet" href="<?=base_url();?>vendor/bootstrap-fileupload/bootstrap-fileupload.min.css" />
-		<link rel="icon" href="favicon.ico" sizes="16x16">
+		<link rel="icon" href="<?=base_url();?>favicon.ico" sizes="16x16">
 
 		<!-- Theme CSS -->
 		<link rel="stylesheet" href="<?=base_url();?>css/theme.css" />
@@ -56,10 +56,35 @@
 
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="<?=base_url();?>css/custom.css">
+		<link rel="stylesheet" href="<?=base_url();?>css/croppie.css" />
 
 		<!-- Head Libs -->
 		<script src="<?=base_url();?>vendor/modernizr/modernizr.js"></script>
 		<style>
+		#imgChange {
+			background: url("<?=base_url();?>overlay.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+			bottom: 0;
+			color: #FFFFFF;
+			display: block;
+			height: 30px;
+			left: 0;
+			line-height: 32px;
+			position: absolute;
+			text-align: center;
+			width: 100%;
+		}
+		#imgChange input[type="file"] {
+			bottom: 0;
+			cursor: pointer;
+			height: 100%;
+			left: 0;
+			margin: 0;
+			opacity: 0;
+			padding: 0;
+			position: absolute;
+			width: 100%;
+			z-index: 0;
+		}
 		#loading {
 			position: fixed;
 			left: 0px;

@@ -1,10 +1,70 @@
-"use strict"; 
 var temaTable;
 $(document).ready(function(){
 	var stst = $('#stst').val();
 	var tapel = $('#tapel').val();
 	var smt = $('#smt').val();
 	var urls=$('#urls').val();
+	var idptk = $('#idptks').val();
+		
+	$image_crop = $('#image_demo').croppie({
+		enableExif: true,
+		viewport: {
+		  width:200,
+		  height:200,
+		  type:'square' //circle
+		},
+		boundary:{
+		  width:300,
+		  height:300
+		}
+	});
+
+  $('#upload_image').on('change', function(){
+    var reader = new FileReader();
+    reader.onload = function (event) {
+      $image_crop.croppie('bind', {
+        url: event.target.result
+      }).then(function(){
+        console.log('jQuery bind complete');
+      });
+    }
+    reader.readAsDataURL(this.files[0]);
+    $('#uploadimageModal').modal('show');
+  });
+  
+	$('.crop_image').click(function(event){
+		$image_crop.croppie('result', {
+		  type: 'canvas',
+		  size: 'viewport'
+		}).then(function(response){
+		  $.ajax({
+			url:urls+"images/uploadfoto.php?idp="+idptk,
+			type: "POST",
+			data:{"image": response},
+			success:function(data)
+			{
+			  $('#uploadimageModal').modal('hide');
+			  $('#uploaded_image').html(data);
+			  const Toast = Swal.mixin({
+				  toast: true,
+				  position: 'top-right',
+				  iconColor: 'white',
+				  customClass: {
+					popup: 'colored-toast'
+				  },
+				  showConfirmButton: false,
+				  timer: 1500,
+				  timerProgressBar: true
+				})
+				Toast.fire({
+				  icon: 'success',
+				  title: 'Photo Profil berhasil diubah'
+				})
+			  //setTimeout(function () {window.open(urls,"_self");},1000)
+			}
+		  });
+		})
+	});
 	temaTable = $('#kt_table_users').DataTable( {
 			"destroy":true,
 			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
@@ -28,26 +88,6 @@ $(document).ready(function(){
 			"paging":true,
 			"ajax": urls+"modul/kepegawaian/daftar-ptk.php?status="+stst+"&smt="+smt+"&tapel="+tapel
 		} );
-	});
-	$('#upload_image').on('change', function(e){
-		e.preventDefault();
-		var idptks = $('#idptks').val();
-		var urls=$('#urls').val();
-		$.ajax({
-			url: urls+"images/upload.php",
-			type: "POST",
-			data: new FormData(this),
-			contentType: false,
-			cache: false,
-			processData:false,
-			success:function(data)
-			{
-			  //$('#uploadimageModal').modal('hide');
-			  $('#uploaded_image').html(data);
-			  //swal('Foto Profil berhasil diubah', {buttons: false,timer: 1000,});
-			  setTimeout(function () {window.open(urls+"ptk","_self");},1000)
-			}
-		  });
 	});
 	
 	
