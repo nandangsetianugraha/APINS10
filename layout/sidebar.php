@@ -56,6 +56,11 @@
 				                                            Rombel
 				                                        </a>
 				                                    </li>
+													<li>
+				                                        <a class="nav-link" href="<?=base_url();?>siswa">
+				                                            Daftar Siswa
+				                                        </a>
+				                                    </li>
 				                                    <li>
 				                                        <a class="nav-link" href="<?=base_url();?>tambah-siswa">
 				                                            Tambah Siswa Baru

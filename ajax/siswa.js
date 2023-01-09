@@ -1,7 +1,14 @@
+var temaTable;
 $(document).ready(function(){
+	var stst = $('#stst').val();
+	var tapel = $('#tapel').val();
+	var smt = $('#smt').val();
+	var urls=$('#urls').val();
 	var idptk = $('#idptks').val();
-		var urls = $('#urls').val();
-		
+	var $modal = $('#modal');
+	var image = document.getElementById('sample_image');
+	var cropper;
+	
 	$image_crop = $('#image_demo').croppie({
 		enableExif: true,
 		viewport: {
@@ -34,7 +41,7 @@ $(document).ready(function(){
 		  size: 'viewport'
 		}).then(function(response){
 		  $.ajax({
-			url:urls+'images/upload-ptk.php?idp='+idptk,
+			url:urls+'images/insert.php?idp='+idptk,
 			type:'POST',
 			data:{"image":response},
 			success:function(data){
@@ -56,14 +63,84 @@ $(document).ready(function(){
 				  icon: 'success',
 				  title: 'Photo Profil berhasil diubah'
 				})
-			  setTimeout(function () {window.open(urls,"_self");},1000)
+			  setTimeout(function () {window.open(urls+"siswa/"+idptk,"_self");},1000)
 			}
 		  })
 		});
 	  });
 
-	$("#ubahForm").unbind('submit').bind('submit', function() {
+	$('#provinsi').change(function(){
+			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
+			var prov = $('#provinsi').val();
+			$.ajax({
+				type : 'GET',
+				url : urls+'config/kabupaten.php',
+				data :  'prov_id=' + prov,
+				success: function (data) {
+					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+					$("#kabupaten").html(data);
+				}
+			});
+	});
+	
+	$('#kabupaten').change(function(){
+			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
+			var kab = $('#kabupaten').val();
+			$.ajax({
+				type : 'GET',
+				url : urls+'config/kecamatan.php',
+				data :  'id_kabupaten=' + kab,
+				success: function (data) {
+					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+					$("#kecamatan").html(data);
+				}
+			});
+	});
+
+	$('#kecamatan').change(function(){
+			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
+			var desa = $('#kecamatan').val();
+			$.ajax({
+				type : 'GET',
+				url : urls+'config/desa.php',
+				data :  'id_kecamatan=' + desa,
+				success: function (data) {
+					//jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+					$("#kelurahan").html(data);
+					// alert($('#provinsi option:selected').text() + $('#kabupaten option:selected').text() + $('#kecamatan option:selected').text() + $('#desa option:selected').text());
+				}
+			});
+	});
+	
+	temaTable = $('#kt_table_users').DataTable( {
+			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
+			"searching": true,
+			"paging":true,
+			"ajax": urls+"modul/siswa/daftar-siswa.php?status="+stst+"&smt="+smt+"&tapel="+tapel
+		} );
+	
+	$('#caridata').on( 'keyup', function () {
+		temaTable.search( this.value ).draw();
+	} );
+	$('#stst').change(function(){
+			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
+		var stst = $('#stst').val();
+		var tapel = $('#tapel').val();
+		var smt = $('#smt').val();
+		temaTable = $('#kt_table_users').DataTable( {
+			"destroy":true,
+			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
+			"searching": true,
+			"paging":true,
+			"ajax": urls+"modul/siswa/daftar-siswa.php?status="+stst+"&smt="+smt+"&tapel="+tapel
+		} );
+	});
+	
+	
+	$("#updatePTK").unbind('submit').bind('submit', function() {
 		var form = $(this);
+		var urls=$('#urls').val();
 		//submi the form to server
 		$.ajax({
 			url : form.attr('action'),
@@ -94,7 +171,7 @@ $(document).ready(function(){
 					  icon: 'success',
 					  title: response.messages
 					});
-					setTimeout(function () {window.open("./","_self");},1000)
+					setTimeout(function () {window.open(urls+"ptk","_self");},1000)
 					//setTimeout(function () {window.open("./","_self");},1000)
 					// reset the form
 				} else {
@@ -126,7 +203,14 @@ $(document).ready(function(){
 			type : form.attr('method'),
 			data : form.serialize(),
 			dataType : 'json',
+			beforeSend: function()
+			{	
+				$("#loading").show();
+				$(".loader").show();
+			},
 			success:function(response) {
+				$("#loading").hide();
+				$(".loader").hide();
 				if(response.success == true) {
 					const Toast = Swal.mixin({
 					  toast: true,
@@ -191,7 +275,66 @@ $(document).ready(function(){
 		}
 		
 		
-	});	
+	});
+	
+	var input = $('#image');
+    var form = $('#image-upload');
+    $(input).change(function(){
+		var file = this.files[0];
+		var imagefile = file.type;
+		var match= ["image/jpeg","image/png","image/jpg"];
+		if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2])))
+		{
+			//wrong image format
+			alert('Format gambar salah.');
+		}else{
+			function previewFile(file, onLoadCallback){
+				var reader = new FileReader();
+				reader.onload = onLoadCallback;
+				reader.readAsDataURL(file);
+			}
+			previewFile(this.files[0], function(e) {
+				$('#preview').html('');
+				// create image preview
+				var img = $('<img>'); 
+				img.attr('src', e.target.result);
+				img.appendTo('#preview');
+			});
+			$(form).submit();
+		}						
+    });
+
+    // event listener untuk form saat di submit
+    $(form).submit(function(event) {
+        // mencegah browser mensubmit form.
+		event.preventDefault();
+		// tampilkan pesan sedang upload
+		$('.loading').html('Uploading..');
+		$.ajax({
+			type: 'POST',
+			url: $(form).attr('action'),
+			data: new FormData(this), 
+			contentType: false,
+			cache: false,             
+			processData:false, 
+			success:function(data) {
+				//$('#preview').html('');
+				$(form).trigger('reset');
+				if(data.error){
+					$('.loading').html(data.error)
+				}else{
+					$('.loading').html(data.message)
+					var img = $('<img>'); 
+					img.attr('src', data.image);
+					img.appendTo('#image-place');
+				}
+				setTimeout(function () {window.open("./","_self");},1000)
+			} // success  
+		}); // ajax submit
+		return false;		
+    });
+	
+	
 })
 
 function PopupCenter(pageURL, title,w,h) {
