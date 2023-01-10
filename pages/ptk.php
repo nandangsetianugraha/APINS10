@@ -123,10 +123,10 @@
 													<div class="profile-footer">														
 														<div id="imgChange">
 															<span>Ubah Foto</span>
-															<input type="file" accept="image/*" name="upload_image" id="upload_image">
-															<input type="hidden" id="idptks" value="<?=$idptk;?>" />
+															<input type="file" name="insert_image" id="insert_image" accept="image/*" />
+															<input type="hidden" id="idptks" value="<?=$tipe;?>" />
 															<input type="hidden" id="urls" value="<?=base_url();?>" />
-														</div>	
+														</div>
 													</div>
 												</div>
 											</div>
@@ -187,6 +187,21 @@
 						</div>
 						<div class="col-lg-8 col-xl-8">
 								<div class="card-body">
+									<div id="tempat_crop" style="display: none">
+												<div class="row">
+													<div class="col-md-8 text-center">
+														<div id="image_demo" style="width:350px; margin-top:30px"></div>
+													</div>
+													<div class="col-md-4" style="padding-top:30px;">
+													<br />
+													<br />
+													<br/>
+														
+													</div>
+												</div>
+												<button class="btn btn-success crop_image">Crop & Upload Image</button>
+											</div>
+											<div id="statistik">
 										<form class="p-3" action="<?=base_url();?>modul/kepegawaian/update-biodata.php" autocomplete="off" method="POST" id="updatePTK">
 													<h4 class="mb-3 font-weight-semibold text-dark">Personal Information</h4>
 													<div class="row">
@@ -290,26 +305,14 @@
 													</div>
 
 												</form>
+												</div>
 									</div>
 								
 						</div>
 					</div>
-					<div class="modal fade" id="uploadimageModal" tabindex="-1" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title">Photo Profil</h5>
-								</div>
-								<div class="modal-body">
-									<div id="image_demo" style="width:350px; margin-top:30px"></div>
-								</div>
-								<div class="modal-footer">
-									<button class="btn btn-success crop_image">Crop & Upload Image</button>
-									<button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-								</div>
-							</div>
-						</div>
-					</div>
+    
+					
+	
 					<?php } ?>
 
 					

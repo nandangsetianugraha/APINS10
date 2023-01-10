@@ -3,12 +3,17 @@
 													session_start();
 													$level=$_SESSION['level'];
 													$idku=$_GET['idptk'];
+													$jns = isset($_GET['jns']) ? $_GET['jns'] : '0';
 													?>
 													<div class="card-body">
 														<ul class="widget-todo-list">
 															<?php 
-															if($level==11){
-																$logs = $connect->query("select * from log order by logDate desc limit 5");
+															if($jns==0){
+																if($level==11){
+																	$logs = $connect->query("select * from log order by logDate desc limit 5");
+																}else{
+																	$logs = $connect->query("select * from log where ptk_id='$idku' order by logDate desc limit 5");
+																};
 															}else{
 																$logs = $connect->query("select * from log where ptk_id='$idku' order by logDate desc limit 5");
 															};

@@ -51,6 +51,8 @@
 		<!-- Theme Initialization Files -->
 		<script src="<?=base_url();?>js/theme.init.js"></script>
 		<script src="<?=base_url();?>js/croppie.js"></script>
+		<script src="<?=base_url();?>js/jquery.imgareaselect.js"></script>
+		<script src="<?=base_url();?>js/jquery.form.js"></script>
 
 		<!-- Examples -->
 		<script src="<?=base_url();?>js/examples/examples.dashboard.js"></script>

@@ -28,9 +28,11 @@
 												$sql3 = "select * from jns_mutasi";
 												$query3 = $connect->query($sql3);
 												while($nk=$query3->fetch_assoc()){
+													if($nk['id_mutasi']==0){}else{
 											?>
 											<option value="<?=$nk['id_mutasi'];?>"><?=$nk['nama_mutasi'];?></option>
-											<?php } ?>
+												<?php }} ?>
+											<option value="0">Mutasi Keluar</option>
 										</select>										
 							</div>
 								<h2 class="card-title">Daftar Siswa</h2>
@@ -124,8 +126,7 @@
 														<div id="imgChange">
 															<span>Ubah Foto</span>
 															<input type="file" name="insert_image" id="insert_image" accept="image/*" />
-
-															<input type="hidden" id="idptks" value="<?=$idptk;?>" />
+															<input type="hidden" id="idptks" value="<?=$tipe;?>" />
 															<input type="hidden" id="urls" value="<?=base_url();?>" />
 														</div>	
 													</div>
@@ -146,29 +147,6 @@
 												<div id="collapse1One" class="accordion-body collapse show">
 													<div class="card-body">
 														<ul class="widget-todo-list">
-															<?php 
-															$logs = $connect->query("select * from log where ptk_id='$tipe' order by logDate desc limit 5");
-															$jlogs=$logs->num_rows;
-															if($jlogs>0){
-																while($mlogs=$logs->fetch_assoc()){
-																	$idlog=$mlogs['id'];
-																	$iduser=$mlogs['ptk_id'];
-																	$nama=$connect->query("select * from ptk where ptk_id='$iduser'")->fetch_assoc();
-															?>
-															<li>
-																<div class="checkbox-custom checkbox-default">
-																	<input type="checkbox" id="todoListItem2" class="todo-check">
-																	<label class="todo-label" for="todoListItem2"><span>[<?=$mlogs['logDate'];?>] <?=$nama['nama'];?> - <?=$mlogs['activity'];?></span></label>
-																</div>
-																<div class="todo-actions">
-																	<?php if($level==11){ ?>
-																	<a href="#" onclick="removeAktivitas(<?=$idlog;?>)">
-																		<i class="fas fa-times"></i>
-																	</a>
-																	<?php } ?>
-																</div>
-															</li>
-															<?php }}else{ ?>
 															<li>
 																<div class="checkbox-custom checkbox-default">
 																	<input type="checkbox" id="todoListItem2" class="todo-check">
@@ -177,8 +155,7 @@
 																<div class="todo-actions">
 																	
 																</div>
-															</li>
-															<?php } ?>															
+															</li>														
 														</ul>
 													</div>
 												</div>
@@ -188,6 +165,21 @@
 						</div>
 						<div class="col-lg-8 col-xl-8">
 								<div class="card-body">
+									<div id="tempat_crop" style="display: none">
+												<div class="row">
+													<div class="col-md-8 text-center">
+														<div id="image_demo" style="width:350px; margin-top:30px"></div>
+													</div>
+													<div class="col-md-4" style="padding-top:30px;">
+													<br />
+													<br />
+													<br/>
+														
+													</div>
+												</div>
+												<button class="btn btn-success crop_image">Crop & Upload Image</button>
+											</div>
+											<div id="statistik">
 										<form class="p-3" action="<?=base_url();?>modul/kepegawaian/update-biodata.php" autocomplete="off" method="POST" id="updatePTK">
 													<h4 class="mb-3 font-weight-semibold text-dark">Personal Information</h4>
 													<div class="row">
@@ -371,38 +363,12 @@
 													</div>
 
 												</form>
+												</div>
 									</div>
 								
 						</div>
 					</div>
-					<div id="insertimageModal" class="modal" role="dialog">
-					 <div class="modal-dialog">
-					  <div class="modal-content">
-						  <div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Crop & Insert Image</h4>
-						  </div>
-						  <div class="modal-body">
-							<div class="row">
-							  <div class="col-md-8 text-center">
-								<div id="image_demo" style="width:350px; margin-top:30px"></div>
-							  </div>
-							  <div class="col-md-4" style="padding-top:30px;">
-							<br />
-							<br />
-							<br/>
-								
-							  </div>
-							</div>
-						  </div>
-						  <div class="modal-footer">
-							<button class="btn btn-success crop_image">Crop & Insert Image</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						  </div>
-						</div>
-					  </div>
-					</div>
-					
+									
 					
 					<?php } ?>
 

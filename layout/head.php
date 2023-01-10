@@ -57,6 +57,7 @@
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="<?=base_url();?>css/custom.css">
 		<link rel="stylesheet" href="<?=base_url();?>css/croppie.css" />
+		<link rel="stylesheet" href="<?=base_url();?>css/imgareaselect.css" />
 
 		<!-- Head Libs -->
 		<script src="<?=base_url();?>vendor/modernizr/modernizr.js"></script>

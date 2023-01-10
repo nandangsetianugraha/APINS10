@@ -1,6 +1,7 @@
 $(document).ready(function(){
+	//$('#tempat_crop').hide();
 	var idptk = $('#idptks').val();
-		var urls = $('#urls').val();
+	var urls = $('#urls').val();
 		
 	$image_crop = $('#image_demo').croppie({
 		enableExif: true,
@@ -25,7 +26,8 @@ $(document).ready(function(){
 		  });
 		}
 		reader.readAsDataURL(this.files[0]);
-		$('#insertimageModal').modal('show');
+		$('#tempat_crop').show();
+		$('#statistik').hide();
 	});
 
 	$('.crop_image').click(function(event){
@@ -37,9 +39,16 @@ $(document).ready(function(){
 			url:urls+'images/upload-ptk.php?idp='+idptk,
 			type:'POST',
 			data:{"image":response},
+			beforeSend: function()
+			{	
+				$("#loading").show();
+				$(".loader").show();
+			},
 			success:function(data){
-			  $('#insertimageModal').modal('hide');
-			  
+				$("#loading").hide();
+				$(".loader").hide();
+			  $('#tempat_crop').hide();
+			  $('#statistik').show();
 			  $('#uploaded_image').html(data);
 			  const Toast = Swal.mixin({
 				  toast: true,

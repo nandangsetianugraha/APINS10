@@ -89,6 +89,21 @@
 				                                            Tambah PTK Baru
 				                                        </a>
 				                                    </li>
+													<li>
+				                                        <a class="nav-link" href="<?=base_url();?>id-pegawai">
+				                                            ID Pegawai
+				                                        </a>
+				                                    </li>
+													<li>
+				                                        <a class="nav-link" href="<?=base_url();?>penggajian">
+				                                            Penggajian
+				                                        </a>
+				                                    </li>
+													<li>
+				                                        <a class="nav-link" href="<?=base_url();?>gaji-bulanan">
+				                                            Gaji Bulanan
+				                                        </a>
+				                                    </li>
 				                                </ul>
 				                            </li>
 				                        </ul>

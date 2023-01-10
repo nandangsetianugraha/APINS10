@@ -3,12 +3,9 @@ $(document).ready(function(){
 	var stst = $('#stst').val();
 	var tapel = $('#tapel').val();
 	var smt = $('#smt').val();
-	var urls=$('#urls').val();
 	var idptk = $('#idptks').val();
-	var $modal = $('#modal');
-	var image = document.getElementById('sample_image');
-	var cropper;
-	
+	var urls = $('#urls').val();
+		
 	$image_crop = $('#image_demo').croppie({
 		enableExif: true,
 		viewport: {
@@ -32,7 +29,8 @@ $(document).ready(function(){
 		  });
 		}
 		reader.readAsDataURL(this.files[0]);
-		$('#insertimageModal').modal('show');
+		$('#tempat_crop').show();
+		$('#statistik').hide();
 	});
 
 	$('.crop_image').click(function(event){
@@ -41,12 +39,19 @@ $(document).ready(function(){
 		  size: 'viewport'
 		}).then(function(response){
 		  $.ajax({
-			url:urls+'images/insert.php?idp='+idptk,
+			url:urls+'images/upload-siswa.php?idp='+idptk,
 			type:'POST',
 			data:{"image":response},
+			beforeSend: function()
+			{	
+				$("#loading").show();
+				$(".loader").show();
+			},
 			success:function(data){
-			  $('#insertimageModal').modal('hide');
-			  
+				$("#loading").hide();
+				$(".loader").hide();
+			  $('#tempat_crop').hide();
+			  $('#statistik').show();
 			  $('#uploaded_image').html(data);
 			  const Toast = Swal.mixin({
 				  toast: true,
@@ -63,11 +68,11 @@ $(document).ready(function(){
 				  icon: 'success',
 				  title: 'Photo Profil berhasil diubah'
 				})
-			  setTimeout(function () {window.open(urls+"siswa/"+idptk,"_self");},1000)
+			  //setTimeout(function () {window.open(urls+"siswa/"+idptk,"_self");},1000)
 			}
 		  })
 		});
-	  });
+	});
 
 	$('#provinsi').change(function(){
 			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax

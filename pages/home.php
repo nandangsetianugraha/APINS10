@@ -166,6 +166,21 @@
 												</p>
 											</div>
 											<?php } ?>
+											<div id="tempat_crop" style="display: none">
+												<div class="row">
+													<div class="col-md-8 text-center">
+														<div id="image_demo" style="width:350px; margin-top:30px"></div>
+													</div>
+													<div class="col-md-4" style="padding-top:30px;">
+													<br />
+													<br />
+													<br/>
+														
+													</div>
+												</div>
+												<button class="btn btn-success crop_image">Crop & Upload Image</button>
+											</div>
+											<div id="statistik">
 											<div class="row mb-3">
 												<div class="col-xl-6">
 													<section class="card card-featured-left card-featured-primary mb-3">
@@ -265,6 +280,7 @@
 														</div>
 													</section>
 												</div>
+											</div>
 											</div>
 											
 										</div>
@@ -442,6 +458,42 @@
 						
 					</div>
 					<!-- end: page -->
+					
+					<!-- staticBackdrop Modal -->
+					<div class="modal fade" id="insertimageModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-body text-center p-5">
+									<lord-icon
+										src="https://cdn.lordicon.com/lupuorrc.json"
+										trigger="loop"
+										colors="primary:#121331,secondary:#08a88a"
+										style="width:120px;height:120px">
+									</lord-icon>
+									
+									<div class="mt-4">
+										<div class="row">
+											<div class="col-md-8 text-center">
+												<div id="image_demo" style="width:350px; margin-top:30px"></div>
+											</div>
+											<div class="col-md-4" style="padding-top:30px;">
+											<br />
+											<br />
+											<br/>
+												
+											</div>
+										</div>
+										<div class="hstack gap-2 justify-content-center">
+											<button class="btn btn-success crop_image">Crop & Upload Image</button>
+											<a href="javascript:void(0);" class="btn btn-success" data-bs-dismiss="modal">Close</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
 					<div class="modal fade" id="insertimageModal" tabindex="-1" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
