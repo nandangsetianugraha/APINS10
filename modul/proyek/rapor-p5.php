@@ -29,7 +29,11 @@ $sql = "select * from penempatan where rombel='$kelas' and tapel='$tapel' and sm
 $query = $connect->query($sql);
 while ($row = $query->fetch_assoc()) {
 	$idp=$row['peserta_didik_id'];
-	$tombol='<a href="cetak/cetak-p5.php?idp='.$idp.'&kelas='.$kelas.'&tapel='.$tapel.'&smt='.$smt.'&proyek='.$idproyek.'" class="btn btn-success mb-2"><i class="fa fa-print opacity-50 me-1" data-kelas="'.$kelas.'" data-ids="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'"></i> Cetak</a>';
+	if(empty($idproyek)){
+		$tombol=' ';
+	}else{
+		$tombol='<a href="cetak/cetak-p5.php?idp='.$idp.'&kelas='.$kelas.'&tapel='.$tapel.'&smt='.$smt.'&proyek='.$idproyek.'" class="btn btn-success mb-2"><i class="fa fa-print opacity-50 me-1" data-kelas="'.$kelas.'" data-ids="'.$idp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'"></i> Cetak</a>';
+	};
 	
 	//$namasis=$pn['nama'];
 	$output['data'][] = array(
