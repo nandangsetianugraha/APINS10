@@ -204,4 +204,157 @@ $(document).ready(function(){
 		}); // ajax subit 				
 		return false;
 	}); // /submit form for create member
+	
+	$("#updatePTK").unbind('submit').bind('submit', function() {
+		var form = $(this);
+		var urls=$('#urls').val();
+		//submi the form to server
+		$.ajax({
+			url : form.attr('action'),
+			type : form.attr('method'),
+			data : form.serialize(),
+			dataType : 'json',
+			beforeSend: function()
+			{	
+				$("#loading").show();
+				$(".loader").show();
+			},
+			success:function(response) {
+				$("#loading").hide();
+				$(".loader").hide();
+				if(response.success == true) {
+					const Toast = Swal.mixin({
+					  toast: true,
+					  position: 'top-right',
+					  iconColor: 'white',
+					  customClass: {
+						popup: 'colored-toast'
+					  },
+					  showConfirmButton: false,
+					  timer: 1500,
+					  timerProgressBar: true
+					})
+					Toast.fire({
+					  icon: 'success',
+					  title: response.messages
+					});
+					setTimeout(function () {window.open(urls+"rombel","_self");},1000)
+					//setTimeout(function () {window.open("./","_self");},1000)
+					// reset the form
+				} else {
+					const Toast = Swal.mixin({
+					  toast: true,
+					  position: 'top-right',
+					  iconColor: 'white',
+					  customClass: {
+						popup: 'colored-toast'
+					  },
+					  showConfirmButton: false,
+					  timer: 1500,
+					  timerProgressBar: true
+					})
+					Toast.fire({
+					  icon: 'error',
+					  title: response.messages
+					});
+				}  // /else
+			} // success  
+		}); // ajax subit 				
+		return false;
+	}); // /submit form for create member
+	
+	
+	//rombel 
+	var tapel = $('#tpl').val();
+		var ids = $('#ids').val();
+		var urls = $('#urls').val();
+		$("#kompetensiTable").dataTable({
+			"destroy":true,
+		  "searching": false,
+		  "paging":false,
+		  "ajax": urls+"modul/siswa/raportk.php?tapel="+tapel+"&ids="+ids
+		});
+		$("#manageMemberTable").dataTable({
+			"destroy":true,
+		  "searching": false,
+		  "paging":false,
+		  "ajax": urls+"modul/siswa/raport.php?tapel="+tapel+"&ids="+ids
+		});
+		$("#tabelEkskul").dataTable({
+			"destroy":true,
+		  "searching": false,
+		  "paging":false,
+		  "ajax": urls+"modul/siswa/ekskul.php?tapel="+tapel+"&ids="+ids
+		});
+		$("#tabelSaran").dataTable({
+			"destroy":true,
+		  "searching": false,
+		  "paging":false,
+		  "ajax": urls+"modul/siswa/saran.php?tapel="+tapel+"&ids="+ids
+		});
+		$("#tabelTB").dataTable({
+			"destroy":true,
+		  "searching": false,
+		  "paging":false,
+		  "ajax": urls+"modul/siswa/tb.php?tapel="+tapel+"&ids="+ids
+		});
+		$("#tabelPrestasi").dataTable({
+			"destroy":true,
+		  "searching": false,
+		  "paging":false,
+		  "ajax": urls+"modul/siswa/prestasiku.php?tapel="+tapel+"&ids="+ids
+		});
+		$("#tabelAbsensi").dataTable({
+			"destroy":true,
+		  "searching": false,
+		  "paging":false,
+		  "ajax": urls+"modul/siswa/absensi.php?tapel="+tapel+"&ids="+ids
+		});
+		$('#tpl').change(function(){
+			var tapel = $('#tpl').val();
+			var ids = $('#ids').val();
+			var urls = $('#urls').val();
+			$("#kompetensiTable").dataTable({
+				"destroy":true,
+			  "searching": false,
+			  "paging":false,
+			  "ajax": urls+"modul/siswa/raportk.php?tapel="+tapel+"&ids="+ids
+			});
+			$("#manageMemberTable").dataTable({
+				"destroy":true,
+			  "searching": false,
+			  "paging":false,
+			  "ajax": urls+"modul/siswa/raport.php?tapel="+tapel+"&ids="+ids
+			});
+			$("#tabelEkskul").dataTable({
+				"destroy":true,
+			  "searching": false,
+			  "paging":false,
+			  "ajax": urls+"modul/siswa/ekskul.php?tapel="+tapel+"&ids="+ids
+			});
+			$("#tabelSaran").dataTable({
+				"destroy":true,
+			  "searching": false,
+			  "paging":false,
+			  "ajax": urls+"modul/siswa/saran.php?tapel="+tapel+"&ids="+ids
+			});
+			$("#tabelTB").dataTable({
+				"destroy":true,
+			  "searching": false,
+			  "paging":false,
+			  "ajax": urls+"modul/siswa/tb.php?tapel="+tapel+"&ids="+ids
+			});
+			$("#tabelPrestasi").dataTable({
+				"destroy":true,
+			  "searching": false,
+			  "paging":false,
+			  "ajax": urls+"modul/siswa/prestasiku.php?tapel="+tapel+"&ids="+ids
+			});
+			$("#tabelAbsensi").dataTable({
+				"destroy":true,
+			  "searching": false,
+			  "paging":false,
+			  "ajax": urls+"modul/siswa/absensi.php?tapel="+tapel+"&ids="+ids
+			});
+		});
 });

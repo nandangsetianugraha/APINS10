@@ -42,9 +42,7 @@
 																	<label class="todo-label" for="todoListItem2"><span>Belum ada Aktivitas</span></label>
 																</div>
 																<div class="todo-actions">
-																	<a class="todo-remove" href="#">
-																		<i class="fas fa-times"></i>
-																	</a>
+																	
 																</div>
 															</li>
 															<?php } ?>															

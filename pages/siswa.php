@@ -42,7 +42,6 @@
 							<table class="table table-bordered table-striped" id="kt_table_users">
 								<thead>
 									<tr>
-										<th></th>
 										<th>Nama Siswa</th>
 										<th>Tempat Lahir</th>
 										<th>Aksi</th>
@@ -164,8 +163,24 @@
 									</section>
 						</div>
 						<div class="col-lg-8 col-xl-8">
-								<div class="card-body">
-									<div id="tempat_crop" style="display: none">
+							<div class="tabs">
+								<ul class="nav nav-tabs tabs-primary">
+									<li class="nav-item active">
+										<button class="nav-link" data-bs-target="#overview" data-bs-toggle="tab">Timeline</button>
+									</li>
+									<li class="nav-item">
+										<button class="nav-link" data-bs-target="#edit" data-bs-toggle="tab">Biodata</button>
+									</li>
+									<li class="nav-item">
+										<button class="nav-link" data-bs-target="#passw" data-bs-toggle="tab">Password</button>
+									</li>
+									<li class="nav-item">
+										<button class="nav-link" data-bs-target="#sk" data-bs-toggle="tab">SK</button>
+									</li>
+								</ul>
+								<div class="tab-content">
+									<div id="overview" class="tab-pane active">
+											<div id="tempat_crop" style="display: none">
 												<div class="row">
 													<div class="col-md-8 text-center">
 														<div id="image_demo" style="width:350px; margin-top:30px"></div>
@@ -180,7 +195,7 @@
 												<button class="btn btn-success crop_image">Crop & Upload Image</button>
 											</div>
 											<div id="statistik">
-										<form class="p-3" action="<?=base_url();?>modul/kepegawaian/update-biodata.php" autocomplete="off" method="POST" id="updatePTK">
+												<form class="p-3" action="<?=base_url();?>modul/kepegawaian/update-biodata.php" autocomplete="off" method="POST" id="updatePTK">
 													<h4 class="mb-3 font-weight-semibold text-dark">Personal Information</h4>
 													<div class="row">
 														<div class="form-group col-md-6">
@@ -361,11 +376,18 @@
 															<button type="submit" class="btn btn-primary">Update</button>
 														</div>
 													</div>
-
 												</form>
-												</div>
+											</div>
+										
 									</div>
-								
+									<div id="edit" class="tab-pane">
+									</div>
+									<div id="passw" class="tab-pane">
+									</div>
+									<div id="sk" class="tab-pane">
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 									

@@ -15,10 +15,18 @@
 					<section class="card">
 						<header class="card-header">
 							<div class="card-actions">
-										<input type="hidden" name="tapel" id="tapel" class="form-control" value="<?=$tapel;?>" placeholder="Username">
-										<input type="hidden" name="smt" id="smt" class="form-control" value="<?=$smt;?>" placeholder="Username">
-										<div class="btn-group">
-										<?php if($level==96){?>
+								<input type="hidden" name="tapel" id="tapel" class="form-control" value="<?=$tapel;?>" placeholder="Username">
+								<input type="hidden" name="smt" id="smt" class="form-control" value="<?=$smt;?>" placeholder="Username">
+							</div>
+									<h2 class="card-title judul">Tujuan Pembelajaran</h2>
+						</header>
+						<div class="card-body">
+							<div class="row mb-2">
+								<div class="col-3">
+									<button type="button" class="btn rounded-0 btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#addProyek">Tujuan Pembelajaran</button>
+								</div>
+								<div class="col-3">
+									<?php if($level==96){?>
 										<select class="form-select" id="kelas" name="kelas">
 											<option value="0">Pilih Rombel</option>
 											<?php 
@@ -96,24 +104,19 @@
 											<option value="<?=substr($kelas,0,1);?>"><?=substr($kelas,0,1);?></option>
 										</select>
 										<?php }; ?>
-										</div>
-										
-										<div class="btn-group">
-										<select class="form-control" id="mp" name="mp">
+								</div>
+								<div class="col-3">
+									<select class="form-control" id="mp" name="mp">
 											<option value="0">Pilih Mapel</option>
 										</select>
-										</div>
-										<div class="btn-group">
-										<select class="form-control" id="materi" name="materi">
+								</div>
+								<div class="col-3">
+									<select class="form-control" id="materi" name="materi">
 											<option value="0">Pilih Materi</option>
 										</select>
-										</div>
-										
-									</div>
-									<h2 class="card-title judul">Tujuan Pembelajaran</h2>
-						</header>
-						<div class="card-body">
-							<button type="button" class="btn rounded-0 btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#addProyek">Tujuan Pembelajaran</button>
+								</div>	
+							</div>
+							
 							
 							<table class="table table-bordered table-striped table-vcenter js-dataTable-full" id="temaTable">
 								<thead>

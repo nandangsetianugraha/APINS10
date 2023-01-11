@@ -25,6 +25,9 @@ if($kelas==0){
 		if($pn['rombel']==null){
 			$actionButton .= '
 				<div class="btn-group">
+					<a href="'.base_url().'rombel/'.$idp.'" type="button" class="mb-1 mt-1 me-1 btn btn-sm btn-default" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'"><i class="far fa-address-card"></i></a>
+				</div>
+				<div class="btn-group">
 					<button type="button" class="mb-1 mt-1 me-1 btn btn-sm btn-default" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-bs-toggle="modal" data-bs-target="#tempatkan"><i class="far fa-address-card"></i></button>
 				</div>
 				<div class="btn-group">
@@ -33,6 +36,12 @@ if($kelas==0){
 				';
 		}else{
 			$actionButton .= '
+				<div class="btn-group">
+					<a href="'.base_url().'rombel/'.$idp.'" type="button" class="mb-1 mt-1 me-1 btn btn-sm btn-default" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'"><i class="far fa-address-card"></i></a>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="mb-1 mt-1 me-1 btn btn-sm btn-default" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-bs-toggle="modal" data-bs-target="#mutasikan"><i class="fas fa-exclamation-triangle"></i></button>
+				</div>
 				<div class="btn-group">
 					<button type="button" class="mb-1 mt-1 me-1 btn btn-sm btn-default" data-smt="'.$smt.'" data-kelas="'.$pn['rombel'].'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" id="keluarRombel"><i class="fas fa-external-link-alt"></i></button>
 				</div>
@@ -58,20 +67,14 @@ if($kelas==0){
 		$ids=$pn['id'];
 		$rmb=$row['rombel'];
 		$namasis=$pn['nama'];
-		$filegbr = 'https://sdi-aljannah.web.id/apins/images/siswa/'.$pn['avatar'];
-		$file_headerss = @get_headers($filegbr);
-		if($file_headerss[0] == 'HTTP/1.1 404 Not Found') {
-			//$exists = false;
-			if($jk==="L"){
-				$avatarm="008-boy-3.svg";
-			}else{
-				$avatarm="017-girl-8.svg";
-			};
-		}else {
-			//$exists = true;
-			$avatarm=$pn['avatar'];
-		};
+		
 		$actionButton = '
+				<div class="btn-group">
+					<a href="'.base_url().'rombel/'.$idp.'" type="button" class="mb-1 mt-1 me-1 btn btn-sm btn-default" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'"><i class="far fa-address-card"></i></a>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="mb-1 mt-1 me-1 btn btn-sm btn-default" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" data-bs-toggle="modal" data-bs-target="#mutasikan"><i class="fas fa-exclamation-triangle"></i></button>
+				</div>
 				<div class="btn-group">
 					<button type="button" class="mb-1 mt-1 me-1 btn btn-sm btn-default" data-smt="'.$smt.'" data-kelas="'.$rmb.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'" id="keluarRombel"><i class="fas fa-external-link-alt"></i></button>
 				</div>

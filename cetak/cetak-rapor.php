@@ -1190,6 +1190,6 @@ $ttd1->printRow();
 $ttd1->endTable();
 
 
- $pdf->Output('D',$namafilenya);
+ //$pdf->Output('D',$namafilenya);
  //$pdf->Output();
- //$pdf->Output('F',$namafilenya);
+ $pdf->Output('F',$namafilenya);

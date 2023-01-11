@@ -429,12 +429,12 @@
 				                                </a>
 				                            </li>
 											<li>
-				                                <a class="nav-link" href="<?=base_url();?>cetak-rapor">
+				                                <a class="nav-link" href="<?=base_url();?>cetak-rapor-ikm">
 				                                    Cetak Rapor
 				                                </a>
 				                            </li>
 											<li>
-				                                <a class="nav-link" href="<?=base_url();?>rekap-rapor">
+				                                <a class="nav-link" href="<?=base_url();?>rekap-rapor-ikm">
 				                                    Rekap Rapor
 				                                </a>
 				                            </li>

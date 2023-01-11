@@ -2,7 +2,7 @@
  include 'fpdf/fpdf.php';
  include 'exfpdf.php';
  include 'easyTable.php';
- include '../config/db_connect.php';
+ include '../function/db_connect.php';
  function TanggalIndo($tanggal)
 	{
 		$bulan = array ('Januari',

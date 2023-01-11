@@ -176,7 +176,7 @@ $(document).ready(function(){
 					  icon: 'success',
 					  title: response.messages
 					});
-					setTimeout(function () {window.open(urls+"ptk","_self");},1000)
+					setTimeout(function () {window.open(urls+"siswa","_self");},1000)
 					//setTimeout(function () {window.open("./","_self");},1000)
 					// reset the form
 				} else {

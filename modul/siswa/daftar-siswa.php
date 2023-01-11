@@ -12,21 +12,7 @@ $output = array('data' => array());
 	while ($row = $query->fetch_assoc()) {
 		$idp=$row['peserta_didik_id'];
 		$jk=$row['jk'];
-		$fileajaxs = base_url().'images/siswa/'.$row['avatar'];
-		$file_headersss = @get_headers($fileajaxs);
-		if($file_headersss[0] == 'HTTP/1.1 404 Not Found') {
-			//$exists = false;
-			$gbr="user-default.jpg";
-		}else {
-			//$exists = true;
-			$gbr=$row['avatar'];
-		};
 		
-		$gmb='
-		<div class="profile-picture" id="image-place">
-			<img src="'.base_url().'images/siswa/'.$gbr.'" width="60px">
-		</div>
-		';
 		$actionButton = '
 		<div class="btn-group">
 			<a href="'.base_url().'siswa/'.$idp.'" type="button" class="mb-1 mt-1 me-1 btn btn-sm btn-default" data-smt="'.$smt.'" data-tapel="'.$tapel.'" data-siswa="'.$idp.'"><i class="far fa-address-card"></i></a>
@@ -38,7 +24,6 @@ $output = array('data' => array());
 		//$tgl=ucfirst(strtolower($row['tempat'])).", ".TanggalIndo($row['tanggal']);
 		//$namasis=$row['nama'];
 		$output['data'][] = array(
-			$gmb,
 			$row['nama'].'<br/>'.$row['nis'].' / '.$row['nisn'],
 			$row['tempat'].'<br/>'.TanggalIndo($row['tanggal']),
 			$actionButton

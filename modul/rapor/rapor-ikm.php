@@ -43,33 +43,37 @@ while ($row = $query->fetch_assoc()) {
 		$data = explode("|" , $m['deskripsi']);
 		$kelebihan=$data[0];
 		$kelemahan=$data[1];
+		if($edit){
+			$stat='';
+		}else{
+			$stat='disabled';
+		};
 		$tbl='
-		<a href="#" class="btn btn-effect-ripple btn-xs btn-primary" type="button" data-tema="'.$ids.'" data-bs-toggle="modal" data-bs-target="#editProyek"><i class="fa fa-edit"></i></a>
+		<a href="#" class="btn btn-effect-ripple btn-xs btn-primary" type="button" data-tema="'.$ids.'" data-bs-toggle="modal" data-bs-target="#editProyek" '.$stat.'><i class="fa fa-edit"></i></a>
 		';
 		if(empty($m['nilai'])){
 			$nHar='';
 		}else{
 			$nHar=number_format($m['nilai'],0);
 		};
-		if($edit){
-			$nh='
-			<button type="button" class="mb-1 mt-1 me-1 btn btn-default" data-kelas="'.$kelas.'" data-mp="'.$mp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'" data-pdid="'.$idp.'" id="getRaport"><i class="fas fa-sync"></i></button>
+		$nh='
+			<button type="button" class="mb-1 mt-1 me-1 btn btn-default" data-kelas="'.$kelas.'" data-mp="'.$mp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'" data-pdid="'.$idp.'" id="getRaport" '.$stat.'><i class="fas fa-sync"></i></button>
 			';
-		}else{
-			$nh=$nHar;
-		};
 	}else{
 		$nHar='';
 		$kelebihan='';
 		$kelemahan='';
-		$tbl='';
 		if($edit){
-			$nh='
-			<button type="button" class="mb-1 mt-1 me-1 btn btn-default" data-kelas="'.$kelas.'" data-mp="'.$mp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'" data-pdid="'.$idp.'" id="getRaport"><i class="fas fa-sync"></i></button>
-			';
+			$stat='';
 		}else{
-			$nh=$nHar;
+			$stat='disabled';
 		};
+		$tbl='
+		<a href="#" class="btn btn-effect-ripple btn-xs btn-primary" type="button" data-tema="'.$ids.'" data-bs-toggle="modal" data-bs-target="#editProyek" '.$stat.'><i class="fa fa-edit"></i></a>
+		';
+		$nh='
+		<button type="button" class="mb-1 mt-1 me-1 btn btn-default" data-kelas="'.$kelas.'" data-mp="'.$mp.'" data-tapel="'.$tapel.'" data-smt="'.$smt.'" data-pdid="'.$idp.'" id="getRaport" '.$stat.'><i class="fas fa-sync"></i></button>
+		';
 	};
 	
 	//$namasis=$pn['nama'];

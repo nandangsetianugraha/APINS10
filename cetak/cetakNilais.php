@@ -111,48 +111,13 @@ $namafilenya="Raport ".$siswa['nama']." - ".$tahun1."".$tahun2."-".$smts.".pdf";
 
 //halaman 2
 $id_kab=$siswa['kabupaten'];
-$curl = curl_init();
-curl_setopt_array($curl, array(
-CURLOPT_URL => "http://dev.farizdotid.com/api/daerahindonesia/provinsi/kabupaten/$id_kab/kecamatan",
-CURLOPT_RETURNTRANSFER => true,
-CURLOPT_ENCODING => "",
-CURLOPT_MAXREDIRS => 10,
-CURLOPT_TIMEOUT => 30,
-CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-CURLOPT_CUSTOMREQUEST => "GET",
-));
-$response = curl_exec($curl);
-$err = curl_error($curl);
-$data = json_decode($response, true);
-for ($i=0; $i < count($data['kecamatans']); $i++) {
-	if($siswa['kecamatan']==$data['kecamatans'][$i]['id']){ 
-		$namakec=$data['kecamatans'][$i]['nama'];
-	}
-};
-
+$kab=$connect->query("select * from kabupaten where id='$id_kab'")->fetch_assoc();
 $id_kec=$siswa['kecamatan'];
-$curl = curl_init();
-curl_setopt_array($curl, array(
-CURLOPT_URL => "http://dev.farizdotid.com/api/daerahindonesia/provinsi/kabupaten/kecamatan/$id_kec/desa",
-CURLOPT_RETURNTRANSFER => true,
-CURLOPT_ENCODING => "",
-CURLOPT_MAXREDIRS => 10,
-CURLOPT_TIMEOUT => 30,
-CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-CURLOPT_CUSTOMREQUEST => "GET",
-));
-$response = curl_exec($curl);
-$err = curl_error($curl);
-$data = json_decode($response, true);
-for ($i=0; $i < count($data['desas']); $i++) {
-	if($siswa['kelurahan']==$data['desas'][$i]['id']){ 
-		$namadesa=$data['desas'][$i]['nama'];
-	}
-};
+$kec=$connect->query("select * from kecamatan where id='$id_kec'")->fetch_assoc();
+$id_desa=$siswa['kelurahan'];
+$desa=$connect->query("select * from desa where id='$id_desa'")->fetch_assoc();
 
-
-
- $pdf->AddPage(); 
+$pdf->AddPage(); 
  $pdf->SetFont('helvetica','',12);
 
  $table2=new easyTable($pdf, 1);
@@ -268,14 +233,22 @@ for ($i=0; $i < count($data['desas']); $i++) {
  $table3->easyCell('Ayah');
  $table3->easyCell(':');
  $table3->easyCell('');
+if($idpa==1){
+  $table3->easyCell('','border:B;font-style:B');
+}else{
  $table3->easyCell($peka['nama_pekerjaan'],'border:B;font-style:B');
+}
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Ibu');
  $table3->easyCell(':');
  $table3->easyCell('');
+ if($idpi==1){
+  $table3->easyCell('','border:B;font-style:B');
+}else{
  $table3->easyCell($peki['nama_pekerjaan'],'border:B;font-style:B');
+}
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
@@ -296,14 +269,14 @@ for ($i=0; $i < count($data['desas']); $i++) {
  $table3->easyCell('Kelurahan/Desa');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell($namadesa,'border:B;font-style:B');
+ $table3->easyCell($desa['nama'],'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');
  $table3->easyCell('Kecamatan');
  $table3->easyCell(':');
  $table3->easyCell('');
- $table3->easyCell($namakec,'border:B;font-style:B');
+ $table3->easyCell($kec['nama'],'border:B;font-style:B');
  $table3->printRow();
  
  $table3->rowStyle('font-size:12');

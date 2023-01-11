@@ -12,19 +12,11 @@ $output = array('data' => array());
 	while ($row = $query->fetch_assoc()) {
 		$idp=$row['ptk_id'];
 		$jk=$row['jenis_kelamin'];
-		$fileajaxs = base_url().'images/ptk/'.$row['gambar'];
-		$file_headersss = @get_headers($fileajaxs);
-		if($file_headersss[0] == 'HTTP/1.1 404 Not Found') {
-			//$exists = false;
-			$gbr="user-default.jpg";
-		}else {
-			//$exists = true;
-			$gbr=$row['gambar'];
-		};
+		
 		
 		$gmb='
 		<div class="profile-picture" id="image-place">
-			<img src="'.base_url().'images/ptk/'.$gbr.'" width="60px">
+			<img src="'.base_url().'images/ptk/'.$row['gambar'].'" width="60px">
 		</div>
 		';
 		$actionButton = '
