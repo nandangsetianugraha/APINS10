@@ -1,5 +1,9 @@
 					<?php 
 					//$nk=$connect->query("")->fetch_assoc();
+					$kalendar= CAL_GREGORIAN;
+					$bln = date('m');
+					$thn = date('Y');
+					$jhari = cal_days_in_month($kalendar,$bln,$thn);
 					if($level==98 or $level==97){
 						$jlak=$connect->query("select * from penempatan JOIN siswa USING(peserta_didik_id) where siswa.jk='L' and penempatan.rombel='$kelas' and penempatan.tapel='$tapel' and penempatan.smt='$smt'")->num_rows;
 						$jper=$connect->query("select * from penempatan JOIN siswa USING(peserta_didik_id) where siswa.jk='P' and penempatan.rombel='$kelas' and penempatan.tapel='$tapel' and penempatan.smt='$smt'")->num_rows;
@@ -51,6 +55,16 @@
 											</div>
 
 										</header>
+										<?php 
+											$hariini=date('Y-m-d');
+											$idp=$bioku['ptk_id'];
+											$nsb=$connect->query("select * from id_pegawai where ptk_id='$idp'")->fetch_assoc();
+											$ida=$nsb['pegawai_id'];
+											$sql2 = "SELECT *,min(left(RIGHT(tanggal, 8), 5)) jam1,MAX(left(right(tanggal, 8), 5)) jam2,if(LEAST(12600,trim(TIME_TO_SEC(TIMEDIFF(min(left(RIGHT(tanggal, 8), 5)), '07:00:00'))))>0,LEAST(12600,trim(TIME_TO_SEC(TIMEDIFF(min(left(RIGHT(tanggal, 8), 5)), '07:00:00'))))/60,'') diff1, 
+											if(LEAST(14400,trim(TIME_TO_SEC(TIMEDIFF('15:45:00', MAX(left(right(tanggal, 8), 5))))))>0,LEAST(14400,trim(TIME_TO_SEC(TIMEDIFF('15:45:00', MAX(left(right(tanggal, 8), 5))))))/60,'') diff2
+											FROM absensi_ptk where date(tanggal)='$hariini' and pegawai_id='$ida' group by pegawai_id";
+											$jabs=$connect->query($sql2)->fetch_assoc();
+										?>
 										<div id="accordion" class="w-100">
 											<div class="card card-accordion card-accordion-first">
 												<div class="card-header border-bottom-0">
@@ -62,6 +76,44 @@
 												</div>
 												<div id="collapse1One" class="accordion-body collapse show">
 													<div class="card-body">
+														<section class="card card-featured-left card-featured-primary mb-3">
+															<div class="card-body">
+																<div class="widget-summary">
+																	<div class="widget-summary-col widget-summary-col-icon">
+																		<div class="summary-icon bg-primary">
+																			<i class="fas fa-calendar"></i>
+																		</div>
+																	</div>
+																	<div class="widget-summary-col">
+																		<div class="summary">
+																			<h4 class="title">Masuk</h4>
+																			<div class="info">
+																				<strong class="amount"><?=$jabs['jam1'];?></strong>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</section>
+														<section class="card card-featured-left card-featured-secondary mb-3">
+															<div class="card-body">
+																<div class="widget-summary">
+																	<div class="widget-summary-col widget-summary-col-icon">
+																		<div class="summary-icon bg-secondary">
+																			<i class="fas fa-calendar"></i>
+																		</div>
+																	</div>
+																	<div class="widget-summary-col">
+																		<div class="summary">
+																			<h4 class="title">Keluar</h4>
+																			<div class="info">
+																				<strong class="amount"><?=$jabs['jam2'];?></strong>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</section>
 														<ul class="widget-todo-list">
 															<?php 
 															if($level==11){
@@ -181,6 +233,51 @@
 												<button class="btn btn-success crop_image">Crop & Upload Image</button>
 											</div>
 											<div id="statistik">
+											
+											<div class="row mb-3">
+												<div class="col-xl-6">
+													<section class="card card-featured-left card-featured-primary mb-3">
+														<div class="card-body">
+															<div class="widget-summary">
+																<div class="widget-summary-col widget-summary-col-icon">
+																	<div class="summary-icon bg-primary">
+																		<i class="fas fa-calendar"></i>
+																	</div>
+																</div>
+																<div class="widget-summary-col">
+																	<div class="summary">
+																		<h4 class="title">Terlambat</h4>
+																		<div class="info">
+																			<strong class="amount"><?=$jabs['diff1'];?></strong>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</section>
+												</div>
+												<div class="col-xl-6">
+													<section class="card card-featured-left card-featured-primary mb-3">
+														<div class="card-body">
+															<div class="widget-summary">
+																<div class="widget-summary-col widget-summary-col-icon">
+																	<div class="summary-icon bg-primary">
+																		<i class="fas fa-calendar"></i>
+																	</div>
+																</div>
+																<div class="widget-summary-col">
+																	<div class="summary">
+																		<h4 class="title">Pulang Awal</h4>
+																		<div class="info">
+																			<strong class="amount"><?=$jabs['diff2'];?></strong>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</section>
+												</div>
+											</div>
 											<div class="row mb-3">
 												<div class="col-xl-6">
 													<section class="card card-featured-left card-featured-primary mb-3">

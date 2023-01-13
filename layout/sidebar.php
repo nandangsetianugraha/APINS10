@@ -95,6 +95,11 @@
 				                                        </a>
 				                                    </li>
 													<li>
+				                                        <a class="nav-link" href="<?=base_url();?>absensi-pegawai">
+				                                            Absensi
+				                                        </a>
+				                                    </li>
+													<li>
 				                                        <a class="nav-link" href="<?=base_url();?>penggajian">
 				                                            Penggajian
 				                                        </a>

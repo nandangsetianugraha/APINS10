@@ -44,14 +44,24 @@
 						<div class="card-body">
 							<div class="row mb-2">
 								<div class="col-md-4">
-									<button class="btn btn-primary btn-icon" id="cetakRekapGaji"><i class="fas fa-print"></i> Rekap Gaji</button>
-									<button class="btn btn-primary btn-icon" id="cetakSlipGaji"><i class="fas fa-print"></i> Slip Gaji</button>
+									<button class="btn btn-primary btn-icon" id="cetakT"><i class="fas fa-print"></i> Cetak Penyerahan Rapor</button>
 								</div>
 								<div class="col-md-4">
 									
 								</div>
 								<div class="col-md-4">
 									
+								</div>
+							</div>
+							<div class="row mb-2">
+								<div class="col-md-12">
+									<div class="alert alert-warning alert-has-icon">
+									  <div class="alert-icon"><i class="fas fa-question-circle"></i></div>
+									  <div class="alert-body">
+										<div class="alert-title">Perhatian</div>
+										Rapor tidak bisa dicetak selama masih ada mata pelajaran yang belum generate nilai rapornya.
+									  </div>
+									</div>
 								</div>
 							</div>
 							

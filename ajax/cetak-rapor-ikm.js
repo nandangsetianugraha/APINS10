@@ -30,21 +30,16 @@ $(document).ready(function(){
 		temaTable.search( this.value ).draw();
 	} );
 	
-	$(document).on('click', '#cetakRekapGaji', function(e){
-		
-			e.preventDefault();
-			var bulan=$('#bulan').val();
-			var tahun=$('#tahun').val();
-			PopupCenter('cetak/rekapgaji.php?bln='+bulan+'&thn='+tahun, 'Cetak Invoice',800,800);
-			
-		});
-	$(document).on('click', '#cetakSlipGaji', function(e){
-		
-			e.preventDefault();
-			var bulan=$('#bulan').val();
-			var tahun=$('#tahun').val();
-			PopupCenter('cetak/slipgaji.php?bln='+bulan+'&thn='+tahun, 'Cetak Invoice',800,800);
-			
+		$( "#cetakT" ).click(function() {
+			var kelas=$('#kelas').val();
+			var tapel=$('#tapel').val();
+			var smt=$('#smt').val();
+			if(kelas == 0){
+				Swal.fire("Kesalahan",'Pilih Kelas Dahulu',"error");
+				//swal('Pilih Kelas Dahulu', {buttons: false,timer: 1000,});
+			}else{
+				window.open('cetak/cetak-penyerahan-raport.php?kelas='+kelas+'&tapel='+tapel+'&smt='+smt,' _blank');
+			}
 		});
 	
 })
