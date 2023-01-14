@@ -76,44 +76,6 @@
 												</div>
 												<div id="collapse1One" class="accordion-body collapse show">
 													<div class="card-body">
-														<section class="card card-featured-left card-featured-primary mb-3">
-															<div class="card-body">
-																<div class="widget-summary">
-																	<div class="widget-summary-col widget-summary-col-icon">
-																		<div class="summary-icon bg-primary">
-																			<i class="fas fa-calendar"></i>
-																		</div>
-																	</div>
-																	<div class="widget-summary-col">
-																		<div class="summary">
-																			<h4 class="title">Masuk</h4>
-																			<div class="info">
-																				<strong class="amount"><?=$jabs['jam1'];?></strong>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</section>
-														<section class="card card-featured-left card-featured-secondary mb-3">
-															<div class="card-body">
-																<div class="widget-summary">
-																	<div class="widget-summary-col widget-summary-col-icon">
-																		<div class="summary-icon bg-secondary">
-																			<i class="fas fa-calendar"></i>
-																		</div>
-																	</div>
-																	<div class="widget-summary-col">
-																		<div class="summary">
-																			<h4 class="title">Keluar</h4>
-																			<div class="info">
-																				<strong class="amount"><?=$jabs['jam2'];?></strong>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</section>
 														<ul class="widget-todo-list">
 															<?php 
 															if($level==11){
@@ -233,51 +195,53 @@
 												<button class="btn btn-success crop_image">Crop & Upload Image</button>
 											</div>
 											<div id="statistik">
+											<div class="input-group">
+												<span class="input-group-text">
+													<i class="fas fa-calendar-alt"></i>
+												</span>
+												<input type="text" id="tanggal" class="form-control-sm" value="<?=date('Y-m-d');?>">
+											</div>
 											
-											<div class="row mb-3">
-												<div class="col-xl-6">
-													<section class="card card-featured-left card-featured-primary mb-3">
-														<div class="card-body">
-															<div class="widget-summary">
-																<div class="widget-summary-col widget-summary-col-icon">
-																	<div class="summary-icon bg-primary">
-																		<i class="fas fa-calendar"></i>
-																	</div>
-																</div>
-																<div class="widget-summary-col">
-																	<div class="summary">
-																		<h4 class="title">Terlambat</h4>
-																		<div class="info">
-																			<strong class="amount"><?=$jabs['diff1'];?></strong>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</section>
+											<div class="pricing-table pricing-table-sm row no-gutters mt-3 mb-3 absen-pegawai">
+												<div class="col-lg-3">
+													<div class="plan most-popular">
+														<h3>
+															Masuk
+															<em class="desc">Sekolah</em>
+															<span><?=$jabs['jam1'];?></span>
+														</h3>
+													</div>
 												</div>
-												<div class="col-xl-6">
-													<section class="card card-featured-left card-featured-primary mb-3">
-														<div class="card-body">
-															<div class="widget-summary">
-																<div class="widget-summary-col widget-summary-col-icon">
-																	<div class="summary-icon bg-primary">
-																		<i class="fas fa-calendar"></i>
-																	</div>
-																</div>
-																<div class="widget-summary-col">
-																	<div class="summary">
-																		<h4 class="title">Pulang Awal</h4>
-																		<div class="info">
-																			<strong class="amount"><?=$jabs['diff2'];?></strong>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</section>
+												<div class="col-lg-3">
+													<div class="plan most-popular">
+														<h3>
+															Keluar
+															<em class="desc">Sekolah</em>
+															<span><?=$jabs['jam2'];?></span>
+														</h3>
+													</div>
+												</div>
+												<div class="col-lg-3">
+													<div class="plan most-popular">
+														<h3>
+															Terlambat
+															<em class="desc">Sekolah</em>
+															<span><?=$jabs['diff1'];?></span>
+														</h3>
+													</div>
+												</div>
+												<div class="col-lg-3">
+													<div class="plan most-popular">
+														<h3>
+															Pulang Cepat
+															<em class="desc">Sekolah</em>
+															<span><?=$jabs['diff2'];?></span>
+														</h3>
+													</div>
 												</div>
 											</div>
+											
+											
 											<div class="row mb-3">
 												<div class="col-xl-6">
 													<section class="card card-featured-left card-featured-primary mb-3">
@@ -295,9 +259,7 @@
 																			<strong class="amount"><?=$jtot;?></strong>
 																		</div>
 																	</div>
-																	<div class="summary-footer">
-																		<a class="text-muted text-uppercase" href="#">(Lihat Semua)</a>
-																	</div>
+																	
 																</div>
 															</div>
 														</div>
@@ -319,9 +281,7 @@
 																			<strong class="amount"><?=$jptk;?></strong>
 																		</div>
 																	</div>
-																	<div class="summary-footer">
-																		<a class="text-muted text-uppercase" href="#">(Lihat Semua)</a>
-																	</div>
+																	
 																</div>
 															</div>
 														</div>
@@ -345,9 +305,7 @@
 																			<strong class="amount"><?=$jlak;?></strong>
 																		</div>
 																	</div>
-																	<div class="summary-footer">
-																		<a class="text-muted text-uppercase" href="#">(Lihat Semua)</a>
-																	</div>
+																	
 																</div>
 															</div>
 														</div>
@@ -369,9 +327,7 @@
 																			<strong class="amount"><?=$jper;?></strong>
 																		</div>
 																	</div>
-																	<div class="summary-footer">
-																		<a class="text-muted text-uppercase" href="#">(Lihat Semua)</a>
-																	</div>
+																	
 																</div>
 															</div>
 														</div>

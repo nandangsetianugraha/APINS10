@@ -2,6 +2,28 @@ $(document).ready(function(){
 	//$('#tempat_crop').hide();
 	var idptk = $('#idptks').val();
 	var urls = $('#urls').val();
+	$('#tanggal').datepicker({
+		format: 'yyyy-mm-dd',
+		autoclose:true
+	});
+	$('#tanggal').change(function(){
+			//Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax
+		var tanggal=$('#tanggal').val();
+		var idptk = $('#idptks').val();
+		var urls = $('#urls').val();
+		$.ajax({
+            type : 'post',
+            url : 'modul/kepegawaian/lihat_absen.php',
+            data :  'rowid='+ idptk +'&tanggal='+tanggal,
+			beforeSend: function()
+			{	
+				$(".absen-pegawai").html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading ...');
+			},
+            success : function(data){
+				$('.absen-pegawai').html(data);//menampilkan data ke dalam modal
+            }
+        });
+	});
 		
 	$image_crop = $('#image_demo').croppie({
 		enableExif: true,

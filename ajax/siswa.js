@@ -5,6 +5,10 @@ $(document).ready(function(){
 	var smt = $('#smt').val();
 	var idptk = $('#idptks').val();
 	var urls = $('#urls').val();
+	$('#tanggal').datepicker({
+		format: 'yyyy-mm-dd',
+		autoclose:true
+	});
 		
 	$image_crop = $('#image_demo').croppie({
 		enableExif: true,
@@ -141,6 +145,88 @@ $(document).ready(function(){
 			"ajax": urls+"modul/siswa/daftar-siswa.php?status="+stst+"&smt="+smt+"&tapel="+tapel
 		} );
 	});
+	
+	$('#mutasikan').on('show.bs.modal', function (e) {
+		var siswa = $(e.relatedTarget).data('siswa');
+		var smt = $(e.relatedTarget).data('smt');
+		var tapel = $(e.relatedTarget).data('tapel');
+		//menggunakan fungsi ajax untuk pengambilan data
+        $.ajax({
+            type : 'get',
+            url : 'modul/siswa/mutasikan.php',
+            data :  'siswa='+siswa+'&smt='+smt+'&tapel='+tapel,
+			beforeSend: function()
+			{	
+				$(".mutasikan-data").html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Loading ...');
+			},
+            success : function(data){
+                $('.mutasikan-data').html(data);//menampilkan data ke dalam modal
+            }
+        });
+    });
+	
+	$("#mutasiForm").unbind('submit').bind('submit', function() {
+		var form = $(this);
+		var urls=$('#urls').val();
+		//submi the form to server
+		$.ajax({
+			url : form.attr('action'),
+			type : form.attr('method'),
+			data : form.serialize(),
+			dataType : 'json',
+			beforeSend: function()
+			{	
+				$("#loading").show();
+				$(".loader").show();
+			},
+			success:function(response) {
+				$("#loading").hide();
+				$(".loader").hide();
+				if(response.success == true) {
+					const Toast = Swal.mixin({
+					  toast: true,
+					  position: 'top-right',
+					  iconColor: 'white',
+					  customClass: {
+						popup: 'colored-toast'
+					  },
+					  showConfirmButton: false,
+					  timer: 1500,
+					  timerProgressBar: true
+					})
+					Toast.fire({
+					  icon: 'success',
+					  title: response.messages
+					});
+					$("#mutasikan").modal('hide');
+					var stst = $('#stst').val();
+					var tapel = $('#tapel').val();
+					var smt = $('#smt').val();
+					$('#kt_table_users').DataTable().ajax.reload(null, false);
+					//setTimeout(function () {window.open(urls+"siswa","_self");},1000)
+					//setTimeout(function () {window.open("./","_self");},1000)
+					// reset the form
+				} else {
+					const Toast = Swal.mixin({
+					  toast: true,
+					  position: 'top-right',
+					  iconColor: 'white',
+					  customClass: {
+						popup: 'colored-toast'
+					  },
+					  showConfirmButton: false,
+					  timer: 1500,
+					  timerProgressBar: true
+					})
+					Toast.fire({
+					  icon: 'error',
+					  title: response.messages
+					});
+				}  // /else
+			} // success  
+		}); // ajax subit 				
+		return false;
+	}); // /submit form for create member
 	
 	
 	$("#updatePTK").unbind('submit').bind('submit', function() {

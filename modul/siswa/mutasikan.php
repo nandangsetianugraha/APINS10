@@ -13,7 +13,7 @@ $rombel=$connect->query("SELECT * FROM penempatan where peserta_didik_id='$idp' 
 
 											<div class="widget-profile-info">
 												<div class="profile-picture">
-													<img src="https://sdi-aljannah.web.id/apins/images/siswa/<?=$siswa['avatar'];?>">
+													<img src="<?=base_url();?>images/siswa/<?=$siswa['avatar'];?>">
 												</div>
 												<div class="profile-info">
 													<h4 class="name font-weight-semibold"><?=$siswa['nama'];?></h4>

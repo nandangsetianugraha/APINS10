@@ -25,6 +25,7 @@
 		<link rel="stylesheet" href="<?=base_url();?>vendor/animate/animate.compat.css">
 		<link rel="stylesheet" href="<?=base_url();?>vendor/font-awesome/css/all.min.css" />
 		<link rel="stylesheet" href="<?=base_url();?>vendor/boxicons/css/boxicons.min.css" />
+		<link rel="stylesheet" href="<?=base_url();?>vendor/simple-line-icons/css/simple-line-icons.css" />
 		<link rel="stylesheet" href="<?=base_url();?>vendor/magnific-popup/magnific-popup.css" />
 		<link rel="stylesheet" href="<?=base_url();?>vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
 		<link rel="stylesheet" href="<?=base_url();?>vendor/jquery-ui/jquery-ui.css" />

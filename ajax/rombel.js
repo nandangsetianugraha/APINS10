@@ -1,9 +1,12 @@
-"use strict"; 
 var temaTable;
 $(document).ready(function(){
 	var kelas = $('#kelas').val();
 	var tapel = $('#tapel').val();
 	var smt = $('#smt').val();
+	$('#tanggal').datepicker({
+		format: 'yyyy-mm-dd',
+		autoclose:true
+	});
 	temaTable = $('#kt_table_users').DataTable( {
 			"destroy":true,
 			"dom": '<"row"<"col-lg-6"l><"col-lg-6"f>><"table-responsive"t>p',
