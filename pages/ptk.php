@@ -65,10 +65,10 @@
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 												<div class="modal-header">
-													<h5 class="modal-title">Mutasikan Siswa?</h5>
+													<h5 class="modal-title">Mutasikan PTK?</h5>
 													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 												</div>
-												<form id="mutasiForm" method="POST" action="modul/siswa/mutasi.php" class="form">
+												<form id="mutasiForm" method="POST" action="modul/kepegawaian/mutasi.php" class="form">
 													<div class="mutasikan-data"></div>
 												</form>
 											</div>

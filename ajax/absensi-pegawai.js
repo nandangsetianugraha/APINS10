@@ -1,4 +1,3 @@
-"use strict"; 
 var temaTable;
 $(document).ready(function() {
 	$('#tanggal').datepicker({
@@ -32,7 +31,7 @@ $(document).ready(function() {
 		} );
 	});
 	
-		$('#editTema').on('show.bs.modal', function (e) {
+	$('#editTema').on('show.bs.modal', function (e) {
             var rowid = $(e.relatedTarget).data('tema');
 			var tanggal=$('#tanggal').val();
             //menggunakan fungsi ajax untuk pengambilan data
@@ -49,8 +48,8 @@ $(document).ready(function() {
                 }
             });
          });
-		
-		$("#updateTemaForm").unbind('submit').bind('submit', function() {
+	
+	$("#updateTemaForm").unbind('submit').bind('submit', function() {
 			var form = $(this);
 
 			$.ajax({
@@ -58,14 +57,7 @@ $(document).ready(function() {
 				type: form.attr('method'),
 				data: form.serialize(),
 				dataType: 'json',
-				beforeSend: function()
-				{	
-					$("#loading").show();
-					$(".loader").show();
-				},
 				success:function(response) {
-					$("#loading").hide();
-					$(".loader").hide();
 					if(response.success == true) {
 						const Toast = Swal.mixin({
 						  toast: true,
@@ -81,11 +73,8 @@ $(document).ready(function() {
 						Toast.fire({
 						  icon: 'success',
 						  title: response.messages
-						})
+						});
 						var tanggal=$('#tanggal').val();
-						var tapel=$('#tapel').val();
-						var smt=$('#smt').val();
-						var urls = $('#urls').val();
 						temaTable.ajax.reload(null, false);
 						$("#editTema").modal('hide');
 					} else {
@@ -109,4 +98,5 @@ $(document).ready(function() {
 			}); // /ajax
 			return false;
 		});
+
 });

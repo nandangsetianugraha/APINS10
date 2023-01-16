@@ -2,7 +2,7 @@
  include 'fpdf/fpdf.php';
  include 'exfpdf.php';
  include 'easyTable.php';
- include '../function/db_connect.php';
+ include '../config/db_connect.php';
  
 	$kelas=$_GET['kelas'];
 	$ab=substr($kelas, 0, 1);
