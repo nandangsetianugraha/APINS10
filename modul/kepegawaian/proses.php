@@ -34,12 +34,20 @@ if(isset($_FILES['berkas_excel']['name']) && in_array($_FILES['berkas_excel']['t
 		if($masuk==''){
 		}else{
 			$jmasuk=$tanggal." ".$masuk;
-			$query2 = $connect->query("INSERT INTO absensi_ptk(pegawai_id,tanggal) VALUES('$idpeg','$jmasuk')");
+			$ada=$connect->query("select * from absensi_ptk where pegawai_id='$idpeg' and tanggal='$jmasuk'")num_rows;
+			if($ada>0){
+			}else{
+				$query2 = $connect->query("INSERT INTO absensi_ptk(pegawai_id,tanggal) VALUES('$idpeg','$jmasuk')");
+			}
 		};
 		if($keluar==''){
 		}else{
 			$jkeluar=$tanggal." ".$keluar;
-			$query2 = $connect->query("INSERT INTO absensi_ptk(pegawai_id,tanggal) VALUES('$idpeg','$jkeluar')");
+			$ada=$connect->query("select * from absensi_ptk where pegawai_id='$idpeg' and tanggal='$jkeluar'")num_rows;
+			if($ada>0){
+			}else{
+				$query2 = $connect->query("INSERT INTO absensi_ptk(pegawai_id,tanggal) VALUES('$idpeg','$jkeluar')");
+			}
 		};
 		if($query2 === TRUE) {
 			$output['success'] = true;

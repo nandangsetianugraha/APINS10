@@ -195,12 +195,22 @@
 												<button class="btn btn-success crop_image">Crop & Upload Image</button>
 											</div>
 											<div id="statistik">
-											<div class="input-group">
-												<span class="input-group-text">
-													<i class="fas fa-calendar-alt"></i>
-												</span>
-												<input type="text" id="tanggal" class="form-control-sm" value="<?=date('Y-m-d');?>">
+											<div class="row mb-2">
+												<div class="col-6">
+													<div class="input-group">
+														<span class="input-group-text">
+															<i class="fas fa-calendar-alt"></i>
+														</span>
+														<input type="text" id="tanggal" class="form-control-sm" value="<?=date('Y-m-d');?>">
+													</div>
+												</div>
+												<div class="col-6">
+													<div class="alert alert-primary alert-dismissible fade show" role="alert">
+														<strong>Update Data Absensi</strong> Setiap hari jam 08.00 dan jam 16.00.
+													</div>
+												</div>
 											</div>
+											
 											
 											<div class="pricing-table pricing-table-sm row no-gutters mt-3 mb-3 absen-pegawai">
 												<div class="col-lg-3">
@@ -224,7 +234,7 @@
 												<div class="col-lg-3">
 													<div class="plan most-popular">
 														<h3>
-															Terlambat
+															Late
 															<em class="desc">Sekolah</em>
 															<span><?=$jabs['diff1'];?></span>
 														</h3>
@@ -233,7 +243,7 @@
 												<div class="col-lg-3">
 													<div class="plan most-popular">
 														<h3>
-															Pulang Cepat
+															Early
 															<em class="desc">Sekolah</em>
 															<span><?=$jabs['diff2'];?></span>
 														</h3>
