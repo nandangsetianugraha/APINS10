@@ -19,9 +19,9 @@
 					<section class="card">
 						<header class="card-header">
 							<div class="card-actions">
-								<input type="hidden" name="tapel" id="tapel" class="form-control" value="<?=$tapel;?>" placeholder="Username">
+										<input type="hidden" name="tapel" id="tapel" class="form-control" value="<?=$tapel;?>" placeholder="Username">
 										<input type="hidden" name="smt" id="smt" class="form-control" value="<?=$smt;?>" placeholder="Username">
-										<?php 
+												<?php 
 												$sql = "select * from rombel where tapel='$tapel' order by nama_rombel asc";
 												$query = $connect->query($sql);
 												?>

@@ -195,6 +195,8 @@
 												<button class="btn btn-success crop_image">Crop & Upload Image</button>
 											</div>
 											<div id="statistik">
+											<p>Jarak Anda dengan Lokasi Kantor : <span id="jarak"></span> meter</p>
+											<span id="lokasi"></span>
 											<div class="row mb-2">
 												<div class="col-12">
 													<div class="alert alert-primary alert-dismissible fade show" role="alert">

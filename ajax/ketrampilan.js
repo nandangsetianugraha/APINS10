@@ -103,7 +103,7 @@ $(document).ready(function(){
 		// send ajax to update value
 		$(editableObj).css("background","#FFF url(loader.gif) no-repeat right");
 		$.ajax({
-			url: "modul/penilaian/saveHarian.php",
+			url: "modul/penilaian/saveKet.php",
 			cache: false,
 			data:'column='+column+'&value='+editableObj.innerHTML+'&id='+id+'&kelas='+kelas+'&smt='+smt+'&tapel='+tapel+'&mp='+mpid+'&kd='+kd+'&jns='+jns+'&tema='+tema,
 			success: function(response)  {
